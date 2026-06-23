@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrículas 2025 — Colégio Criativo · Bauru</title>
+  <meta name="description" content="Matrículas e rematrículas abertas no Colégio Criativo de Bauru. 30 anos de tradição, do Berçário ao Ensino Médio, Sistema Mackenzie.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       TOKENS
+    ============================================================ */
+    :root {
+      --navy:        #0E2A6E;
+      --navy-deep:   #091d4f;
+      --red:         #E2161B;
+      --red-hover:   #c01015;
+      --white:       #FFFFFF;
+      --gold:        #F4C430;
+      --gray-100:    #F4F5F7;
+      --gray-400:    #5B6470;
+      --gray-900:    #1A1A1A;
+
+      --font-display: 'Archivo', sans-serif;
+      --font-body:    'Inter', sans-serif;
+
+      --r-sm:  8px;
+      --r-md:  16px;
+      --r-lg:  24px;
+      --r-xl:  40px;
+
+      --shadow-sm: 0 2px 8px  rgba(14,42,110,.08);
+      --shadow-md: 0 8px 32px rgba(14,42,110,.12);
+      --shadow-lg: 0 20px 56px rgba(14,42,110,.18);
+
+      --ease: cubic-bezier(.4,0,.2,1);
+      --t: .3s var(--ease);
+
+      --max-w: 1200px;
+      --pad-x: clamp(20px, 4vw, 48px);
+      --sec-y: clamp(72px, 9vw, 128px);
+    }
+
+    /* ============================================================
+       RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a   { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    @media (prefers-reduced-motion: reduce) {
+      *, .reveal { transition: none !important; animation: none !important; }
+    }
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+
+    .label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    .label--gold { color: var(--gold); }
+
+    .h-display {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.8vw, 46px);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -.02em;
+      color: var(--navy);
+    }
+    .h-display--white { color: var(--white); }
+
+    .lead {
+      font-size: clamp(15px, 1.6vw, 17px);
+      color: var(--gray-400);
+      line-height: 1.75;
+      max-width: 540px;
+    }
+    .lead--white { color: rgba(255,255,255,.65); }
+
+    /* Reveal scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s var(--ease), transform .65s var(--ease);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .delay-1 { transition-delay: .08s; }
+    .delay-2 { transition-delay: .16s; }
+    .delay-3 { transition-delay: .24s; }
+    .delay-4 { transition-delay: .32s; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 13px 26px;
+      border-radius: var(--r-sm);
+      transition: var(--t);
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .btn svg { flex-shrink: 0; }
+
+    .btn-red {
+      background: var(--red);
+      color: var(--white);
+    }
+    .btn-red:hover {
+      background: var(--red-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(226,22,27,.38);
+    }
+
+    .btn-outline-white {
+      border: 2px solid rgba(255,255,255,.45);
+      color: var(--white);
+    }
+    .btn-outline-white:hover {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.8);
+    }
+
+    .btn-outline-navy {
+      border: 2px solid var(--navy);
+      color: var(--navy);
+    }
+    .btn-outline-navy:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .btn-lg { font-size: 16px; padding: 16px 32px; }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    .header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 200;
+      padding: 20px 0;
+      transition: background var(--t), padding var(--t), box-shadow var(--t);
+    }
+    .header.stuck {
+      background: var(--white);
+      padding: 12px 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    /* Logo */
+    .logo { display: flex; align-items: center; }
+    .logo-img {
+      height: 44px;
+      width: auto;
+      display: block;
+      transition: opacity var(--t);
+    }
+    .logo-img--dark  { display: none; }
+    .header.stuck .logo-img--light { display: none; }
+    .header.stuck .logo-img--dark  { display: block; }
+
+    /* Nav */
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav__link {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,.8);
+      transition: color var(--t);
+    }
+    .header.stuck .nav__link { color: var(--navy); }
+    .nav__link:hover { color: var(--white) !important; }
+    .header.stuck .nav__link:hover { color: var(--red) !important; }
+
+    /* Hamburger */
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px 4px;
+    }
+    .burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--t);
+    }
+    .header.stuck .burger span { background: var(--navy); }
+
+    /* Mobile drawer */
+    .drawer {
+      position: fixed;
+      inset: 0;
+      background: var(--navy);
+      z-index: 199;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      transform: translateX(100%);
+      transition: transform .4s var(--ease);
+    }
+    .drawer.open { transform: none; }
+    .drawer .nav__link {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .drawer__close {
+      position: absolute;
+      top: 20px;
+      right: var(--pad-x);
+    }
+    .drawer__close svg { stroke: var(--white); }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      min-height: 100svh;
+      background: var(--navy);
+      background-image: url('design/assets/Prancheta 1 cópia.png');
+      background-size: cover;
+      background-position: center top;
+      position: relative;
+      display: block;
+      padding-top: 96px;
+      overflow: hidden;
+    }
+
+    /* Dark overlay para legibilidade do texto */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(9,29,79,.85) 0%,
+        rgba(9,29,79,.65) 50%,
+        rgba(9,29,79,.25) 100%
+      );
+    }
+
+    /* Container dentro do hero ocupa largura total para alinhar com o header */
+    .hero .container {
+      min-height: calc(100svh - 96px);
+      display: flex;
+      align-items: center;
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      padding-bottom: 64px;
+      padding-top: 32px;
+    }
+
+    /* Eyebrow pill */
+    .hero__pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(244,196,48,.1);
+      border: 1px solid rgba(244,196,48,.22);
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 22px;
+    }
+    .hero__pill-dot {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: blink 2.2s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(1.35); }
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5.2vw, 76px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.04;
+      letter-spacing: -.025em;
+      margin-bottom: 22px;
+    }
+    .hero__title em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero__sub {
+      font-size: clamp(15px, 1.7vw, 18px);
+      color: rgba(255,255,255,.7);
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+
+    .hero__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 44px;
+    }
+
+    /* Trust bar */
+    .hero__trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .trust-item__icon {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(244,196,48,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .trust-item__icon svg { width:16px; height:16px; fill:var(--gold); }
+    .trust-item__text { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.3; }
+    .trust-item__text strong { display:block; color:rgba(255,255,255,.9); font-size:14px; }
+
+
+    /* Hero wave */
+    .hero__wave {
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      line-height: 0;
+    }
+
+    /* ============================================================
+       STATS BAR
+    ============================================================ */
+    .stats { background: var(--white); padding: 56px 0; }
+    .stats__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--gray-100);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      gap: 1px;
+    }
+    .stat {
+      background: var(--white);
+      padding: 36px 28px;
+      text-align: center;
+    }
+    .stat__num {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 3.5vw, 48px);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat__num span { color: var(--red); }
+    .stat__label {
+      font-size: 13px;
+      color: var(--gray-400);
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    /* ============================================================
+       SECTION GENERIC
+    ============================================================ */
+    .sec { padding: var(--sec-y) 0; }
+    .sec--gray { background: var(--gray-100); }
+    .sec--navy { background: var(--navy); position: relative; overflow: hidden; }
+    .sec--navy-grid::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+    .sec__header { margin-bottom: clamp(36px, 4.5vw, 60px); }
+    .sec__header--center { text-align: center; }
+    .sec__header--center .lead { margin: 0 auto; }
+
+    /* ============================================================
+       PILARES
+    ============================================================ */
+    .pilares__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .pilar {
+      background: var(--white);
+      border-radius: var(--r-lg);
+      padding: 32px 26px;
+      border: 1.5px solid transparent;
+      transition: var(--t);
+    }
+    .pilar:hover {
+      border-color: var(--navy);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .pilar__icon {
+      width: 52px; height: 52px;
+      border-radius: var(--r-sm);
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .pilar__icon svg { width:26px; height:26px; fill:var(--gold); }
+    .pilar__title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .pilar__desc { font-size: 14px; color: var(--gray-400); line-height: 1.7; }
+
+    /* ============================================================
+       JORNADA (two-col)
+    ============================================================ */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(44px, 7vw, 96px);
+      align-items: center;
+    }
+    .two-col--flip > *:first-child { order: 2; }
+    .two-col--flip > *:last-child  { order: 1; }
+
+    .img-blob {
+      position: relative;
+    }
+    .img-blob__main {
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+    .img-blob__main img { width:100%; height:100%; object-fit:cover; }
+
+    .float-card {
+      position: absolute;
+      border-radius: var(--r-md);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-md);
+    }
+    .float-card--navy {
+      background: var(--navy);
+      color: var(--white);
+      top: 28px;
+      right: -22px;
+    }
+    .float-card__eyebrow {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: .6;
+      margin-bottom: 4px;
+    }
+    .float-card__title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+    .float-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .float-card__tag {
+      background: rgba(255,255,255,.1);
+      border-radius: 100px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,.75);
+    }
+
+    .float-card--gold {
+      background: var(--gold);
+      bottom: 28px;
+      right: -22px;
+    }
+    .float-card--gold .float-card__eyebrow { color: rgba(9,29,79,.6); }
+    .float-card--gold .float-card__title { color: var(--navy); font-size: 13px; }
+
+    /* Steps timeline */
+    .steps { display: flex; flex-direction: column; gap: 0; margin-top: 32px; }
+    .step {
+      display: flex;
+      gap: 18px;
+      padding-bottom: 28px;
+      position: relative;
+    }
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 17px; top: 36px; bottom: 0;
+      width: 2px;
+      background: var(--gray-100);
+    }
+    .step__dot {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 13px;
+      color: var(--white);
+      position: relative; z-index: 1;
+    }
+    .step--red .step__dot { background: var(--red); }
+    .step__title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+    .step__desc { font-size: 14px; color: var(--gray-400); line-height: 1.65; }
+
+    /* ============================================================
+       DIFERENCIAIS (navy)
+    ============================================================ */
+    .difs__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      position: relative; z-index: 1;
+    }
+    .dif-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: var(--r-lg);
+      padding: 30px 26px;
+      transition: var(--t);
+    }
+    .dif-card:hover {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+      transform: translateY(-4px);
+    }
+    .dif-card--featured {
+      grid-column: span 2;
+      background: rgba(226,22,27,.1);
+      border-color: rgba(226,22,27,.28);
+    }
+    .dif-card__icon {
+      width: 46px; height: 46px;
+      border-radius: var(--r-sm);
+      background: rgba(255,255,255,.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .dif-card__icon svg { width:22px; height:22px; fill:var(--gold); }
+    .dif-card--featured .dif-card__icon { background: rgba(226,22,27,.2); }
+    .dif-card--featured .dif-card__icon svg { fill: var(--white); }
+    .dif-card__title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .dif-card__desc { font-size: 14px; color: rgba(255,255,255,.58); line-height: 1.7; }
+
+    /* ============================================================
+       INFRA GALLERY
+    ============================================================ */
+    /* Bento grid 3 cols × 3 rows */
+    .infra__gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 280px 220px 220px;
+      gap: 12px;
+    }
+
+    /* A: grupo/comunidade — wide, row 1 */
+    .infra__b1 { grid-column: 1 / 3; grid-row: 1; }
+
+    /* B: piscina — tall, col 3, rows 1–2 */
+    .infra__b2 { grid-column: 3; grid-row: 1 / 3; }
+
+    /* C: ballet — col 1, row 2 */
+    .infra__b3 { grid-column: 1; grid-row: 2; }
+
+    /* D: judô — col 2, row 2 */
+    .infra__b4 { grid-column: 2; grid-row: 2; }
+
+    /* E: espaço pedagógico — wide, cols 1–2, row 3 */
+    .infra__b5 { grid-column: 1 / 3; grid-row: 3; }
+
+    /* F: quadra — col 3, row 3 */
+    .infra__b6 { grid-column: 3; grid-row: 3; }
+
+    .infra__item {
+      border-radius: var(--r-md);
+      overflow: hidden;
+      position: relative;
+    }
+    .infra__item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .6s var(--ease);
+    }
+    .infra__item:hover img { transform: scale(1.06); }
+    .infra__label {
+      position: absolute;
+      bottom: 12px; left: 12px;
+      background: rgba(14,42,110,.82);
+      backdrop-filter: blur(8px);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+
+    /* ============================================================
+       CEPEC
+    ============================================================ */
+    .cepec-quote {
+      background: var(--navy);
+      border-radius: var(--r-lg);
+      padding: 28px 32px;
+      margin-top: 28px;
+      position: relative;
+    }
+    .cepec-quote::before {
+      content: '"';
+      position: absolute;
+      top: -4px; left: 28px;
+      font-family: var(--font-display);
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .cepec-quote p {
+      font-size: 15px;
+      color: rgba(255,255,255,.8);
+      line-height: 1.75;
+      padding-top: 32px;
+      font-style: italic;
+    }
+
+    /* ============================================================
+       EXTRACURRICULARES
+    ============================================================ */
+    .extra__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .extra__tag {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--white);
+      border: 1.5px solid rgba(14,42,110,.1);
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      transition: var(--t);
+      cursor: default;
+    }
+    .extra__tag:hover {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .extra__dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       MACKENZIE STRIP
+    ============================================================ */
+    .mack {
+      background: var(--gray-100);
+      padding: 56px 0;
+    }
+    .mack__inner {
+      display: flex;
+      align-items: center;
+      gap: 44px;
+      justify-content: center;
+    }
+    .mack__badge { text-align: center; flex-shrink: 0; }
+    .mack__name {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--navy);
+    }
+    .mack__sub {
+      font-size: 11px;
+      color: var(--gray-400);
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .mack__div { width:1px; height:52px; background:rgba(14,42,110,.15); }
+    .mack__text h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .mack__text p { font-size: 14px; color: var(--gray-400); line-height: 1.75; max-width: 460px; }
+
+    /* ============================================================
+       DEPOIMENTOS
+    ============================================================ */
+    .deps__grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+    .dep {
+      background: var(--gray-100);
+      border-radius: var(--r-lg);
+      padding: 28px 24px;
+    }
+    .dep--navy { background: var(--navy); }
+    .dep__quote {
+      font-family: var(--font-display);
+      font-size: 44px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: .8;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .dep__stars { display:flex; gap:3px; margin-bottom:10px; }
+    .dep__stars svg { width:13px; height:13px; fill:var(--gold); }
+    .dep__text { font-size:14px; line-height:1.8; color:var(--gray-900); margin-bottom:20px; }
+    .dep--navy .dep__text { color:rgba(255,255,255,.8); }
+    .dep__author { display:flex; align-items:center; gap:10px; }
+    .dep__avatar {
+      width:42px; height:42px;
+      border-radius:50%;
+      overflow:hidden;
+      background:var(--gray-400);
+      flex-shrink:0;
+    }
+    .dep__avatar img { width:100%; height:100%; object-fit:cover; }
+    .dep__name {
+      font-family: var(--font-display);
+      font-size:13px;
+      font-weight:700;
+      color:var(--navy);
+    }
+    .dep--navy .dep__name { color:var(--white); }
+    .dep__role { font-size:12px; color:var(--gray-400); }
+    .dep--navy .dep__role { color:rgba(255,255,255,.45); }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    .faq__tabs {
+      display:flex;
+      gap:8px;
+      justify-content:center;
+      margin-bottom:28px;
+    }
+    .faq__tab {
+      font-family:var(--font-display);
+      font-size:13px;
+      font-weight:700;
+      padding:9px 22px;
+      border-radius:100px;
+      border:2px solid var(--navy);
+      color:var(--navy);
+      cursor:pointer;
+      transition:var(--t);
+    }
+    .faq__tab.active { background:var(--navy); color:var(--white); }
+
+    .faq__panel { display:none; max-width:740px; margin:0 auto; }
+    .faq__panel.active { display:block; }
+
+    .faq__item {
+      background:var(--white);
+      border-radius:var(--r-sm);
+      margin-bottom:6px;
+      overflow:hidden;
+    }
+    .faq__q {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px 22px;
+      font-family:var(--font-display);
+      font-size:15px;
+      font-weight:700;
+      color:var(--navy);
+      text-align:left;
+      width:100%;
+    }
+    .faq__icon {
+      width:24px; height:24px;
+      border-radius:50%;
+      background:var(--gray-100);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+      transition:var(--t);
+    }
+    .faq__icon svg { width:13px; height:13px; stroke:var(--navy); transition:var(--t); }
+    .faq__item.open .faq__icon { background:var(--navy); }
+    .faq__item.open .faq__icon svg { stroke:var(--white); transform:rotate(45deg); }
+    .faq__a {
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .4s var(--ease);
+    }
+    .faq__a-inner {
+      padding:0 22px 18px;
+      font-size:14px;
+      color:var(--gray-400);
+      line-height:1.8;
+    }
+
+    /* ============================================================
+       CTA FINAL
+    ============================================================ */
+    /* ============================================================
+       CTA FINAL
+    ============================================================ */
+    .cta-final {
+      background: var(--navy);
+      padding: var(--sec-y) 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-final::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+    .cta-final::after {
+      content:'';
+      position:absolute;
+      inset:0;
+      background: radial-gradient(ellipse 70% 60% at 50% 30%, rgba(226,22,27,.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-final__inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    /* Logos row */
+    .cta-final__logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 36px;
+    }
+    .cta-final__logo-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,.2);
+    }
+    .cta-final__logos img { display: block; }
+
+    .cta-final__label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .cta-final__title {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4.2vw, 54px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+    .cta-final__title em { font-style: normal; color: var(--gold); }
+    .cta-final__sub {
+      font-size: 16px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.7;
+      margin-bottom: 48px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Two action cards */
+    .cta-final__cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto 56px;
+    }
+    .cta-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--r-lg);
+      padding: 32px 28px;
+      text-align: left;
+      transition: var(--t);
+      display: flex;
+      flex-direction: column;
+    }
+    .cta-card .btn {
+      width: 100%;
+      justify-content: center;
+      margin-top: auto;
+    }
+    .cta-card:hover {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.2);
+    }
+    .cta-card--red {
+      background: rgba(226,22,27,.12);
+      border-color: rgba(226,22,27,.3);
+    }
+    .cta-card--red:hover {
+      background: rgba(226,22,27,.18);
+      border-color: rgba(226,22,27,.5);
+    }
+    .cta-card__tag {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .cta-card--red .cta-card__tag { color: rgba(255,255,255,.6); }
+    .cta-card__title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+    .cta-card__desc {
+      font-size: 13px;
+      color: rgba(255,255,255,.5);
+      line-height: 1.65;
+      margin-bottom: 22px;
+    }
+
+    /* Footer strip */
+    .cta-final__strip {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 28px 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+    }
+    .cta-final__contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,.45);
+    }
+    .contact-row svg { stroke: var(--gold); flex-shrink: 0; }
+    .contact-row a { color: inherit; transition: color var(--t); }
+    .contact-row a:hover { color: var(--white); }
+    .cta-final__copy {
+      font-size: 12px;
+      color: rgba(255,255,255,.2);
+      text-align: center;
+    }
+    .cta-final__mack {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    @media (max-width:768px) {
+      .cta-final__cards { grid-template-columns: 1fr; }
+      .cta-final__strip {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .cta-final__contacts { align-items: center; }
+      .cta-final__mack { justify-content: center; }
+      .cta-final__contact { flex-direction:column; gap:14px; align-items:center; }
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background:#07102a;
+      padding:52px 0 28px;
+    }
+    .footer__grid {
+      display:grid;
+      grid-template-columns:1.6fr 1fr 1fr 1fr;
+      gap:44px;
+      padding-bottom:40px;
+      border-bottom:1px solid rgba(255,255,255,.07);
+      margin-bottom:28px;
+    }
+    .footer__brand-name {
+      font-family:var(--font-display);
+      font-size:22px;
+      font-weight:900;
+      color:var(--white);
+      margin-bottom:2px;
+    }
+    .footer__brand-sub {
+      font-size:10px;
+      font-weight:600;
+      color:rgba(255,255,255,.35);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+    .footer__tagline {
+      font-size:13px;
+      color:rgba(255,255,255,.4);
+      line-height:1.75;
+      max-width:220px;
+      margin-bottom:18px;
+    }
+    .footer__social { display:flex; gap:8px; }
+    .footer__social-link {
+      width:34px; height:34px;
+      border-radius:var(--r-sm);
+      background:rgba(255,255,255,.06);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:var(--t);
+    }
+    .footer__social-link:hover { background:var(--red); }
+    .footer__social-link svg { width:15px; height:15px; fill:rgba(255,255,255,.65); }
+
+    .footer__col-title {
+      font-family:var(--font-display);
+      font-size:11px;
+      font-weight:700;
+      color:rgba(255,255,255,.85);
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+    .footer__links { list-style:none; display:flex; flex-direction:column; gap:9px; }
+    .footer__links a { font-size:13px; color:rgba(255,255,255,.38); transition:color var(--t); }
+    .footer__links a:hover { color:rgba(255,255,255,.75); }
+
+    .footer__bottom {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:12px;
+      color:rgba(255,255,255,.25);
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    /* ============================================================
+       STICKY CTA (mobile only)
+    ============================================================ */
+    .sticky-bar {
+      position:fixed;
+      bottom:0; left:0; right:0;
+      background:var(--white);
+      border-top:1px solid var(--gray-100);
+      box-shadow:0 -4px 20px rgba(0,0,0,.08);
+      padding:10px 16px;
+      display:none;
+      gap:10px;
+      z-index:190;
+    }
+    .sticky-bar .btn { flex:1; justify-content:center; font-size:13px; padding:12px 14px; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width:1024px) {
+      .pilares__grid { grid-template-columns:repeat(2,1fr); }
+      .difs__grid { grid-template-columns:repeat(2,1fr); }
+      .dif-card--featured { grid-column:span 1; }
+      .footer__grid { grid-template-columns:1fr 1fr; gap:32px; }
+    }
+
+    @media (max-width:768px) {
+      .nav { display:none; }
+      .header .btn { display:none; }
+      .burger { display:flex; }
+
+      .hero { min-height:auto; padding-bottom:0; }
+
+      .stats__grid { grid-template-columns:repeat(2,1fr); }
+
+      .pilares__grid { grid-template-columns:1fr; }
+
+      .two-col {
+        grid-template-columns:1fr;
+      }
+      .two-col--flip > *:first-child { order:unset; }
+      .two-col--flip > *:last-child  { order:unset; }
+      .img-blob { display:none; }
+
+      .difs__grid { grid-template-columns:1fr; }
+
+      .infra__gallery {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 200px 200px 200px;
+      }
+      .infra__b1,.infra__b5 { grid-column: span 2; }
+      .infra__b2,.infra__b3,.infra__b4,.infra__b6 { grid-column: span 1; grid-row: auto; }
+
+      .deps__grid { grid-template-columns:1fr; }
+
+      .mack__inner { flex-direction:column; text-align:center; }
+      .mack__div { width:48px; height:1px; }
+
+      .cta-final__contact { flex-direction:column; gap:14px; align-items:center; }
+
+      .footer__grid { grid-template-columns:1fr; gap:28px; }
+      .footer__bottom { flex-direction:column; text-align:center; }
+
+      .sticky-bar { display:flex; }
+    }
+
+    @media (max-width:480px) {
+      .stats__grid { grid-template-columns:1fr; }
+      .infra__gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .infra__b1,.infra__b2,.infra__b3,
+      .infra__b4,.infra__b5,.infra__b6 {
+        grid-column: 1; grid-row: auto;
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     HEADER
+================================================================ -->
+<header class="header" id="header">
+  <div class="container">
+    <div class="header__inner">
+      <a href="#" class="logo">
+        <img src="design/assets/logo_branco.png" alt="Colégio Criativo" class="logo-img logo-img--light">
+        <img src="design/assets/logo_azul.png"   alt="Colégio Criativo" class="logo-img logo-img--dark">
+      </a>
+
+      <nav class="nav">
+        <a href="#pilares"      class="nav__link">Valores</a>
+        <a href="#diferenciais" class="nav__link">Diferenciais</a>
+        <a href="#infra"        class="nav__link">Estrutura</a>
+        <a href="#depoimentos"  class="nav__link">Famílias</a>
+        <a href="#faq"          class="nav__link">Dúvidas</a>
+      </nav>
+
+      <a href="https://wa.me/551432396060?text=Olá!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Colégio%20Criativo." class="btn btn-red" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Garanta a vaga
+      </a>
+
+      <button class="burger" id="burgerBtn" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<nav class="drawer" id="drawer">
+  <button class="drawer__close" id="drawerClose" aria-label="Fechar menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+      <path d="M18 6 6 18M6 6l12 12"/>
+    </svg>
+  </button>
+  <img src="design/assets/logo_branco.png" alt="Colégio Criativo" style="height:52px;width:auto;margin-bottom:12px;">
+  <a href="#pilares"      class="nav__link">Valores</a>
+  <a href="#diferenciais" class="nav__link">Diferenciais</a>
+  <a href="#infra"        class="nav__link">Estrutura</a>
+  <a href="#depoimentos"  class="nav__link">Famílias</a>
+  <a href="#faq"          class="nav__link">Dúvidas</a>
+  <a href="https://wa.me/551432396060?text=Olá!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Colégio%20Criativo." class="btn btn-red btn-lg" target="_blank" rel="noopener">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Garanta a vaga
+  </a>
+</nav>
+
+
+<!-- ================================================================
+     HERO
+================================================================ -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero__inner">
+
+      <!-- Content -->
+      <div class="hero__content">
+        <div class="hero__pill">
+          <span class="hero__pill-dot"></span>
+          Matrículas e Rematrículas 2025
+        </div>
+
+        <h1 class="hero__title">
+          De mãos dadas,<br>
+          construímos o <em>futuro.</em>
+        </h1>
+
+        <p class="hero__sub">
+          Uma educação que acolhe, orienta e desenvolve alunos com princípios sólidos, ética e liderança — do Berçário ao Ensino Médio, em Bauru.
+        </p>
+
+        <div class="hero__ctas">
+          <a href="https://wa.me/551432396060?text=Olá!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Colégio%20Criativo." class="btn btn-red btn-lg" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Agende uma visita
+          </a>
+          <a href="#rematricula" class="btn btn-outline-white btn-lg">
+            Já sou família Criativo · Renovar →
+          </a>
+        </div>
+
+        <div class="hero__trust">
+          <div class="trust-item">
+            <div class="trust-item__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2 3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg>
+            </div>
+            <div class="trust-item__text">
+              <strong>30+ anos</strong>
+              tradição em Bauru
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-item__icon">
+              <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="trust-item__text">
+              <strong>Sistema Mackenzie</strong>
+              parceiro desde 2010
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-item__icon">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75M21 21v-2a4 4 0 0 0-3-3.87"/></svg>
+            </div>
+            <div class="trust-item__text">
+              <strong>Jornada completa</strong>
+              Berçário → Ensino Médio
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="hero__wave">
+    <svg viewBox="0 0 1440 72" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,36 C400,72 1040,0 1440,36 L1440,72 L0,72 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     STATS
+================================================================ -->
+<section class="stats">
+  <div class="container">
+    <div class="stats__grid">
+      <div class="stat reveal">
+        <div class="stat__num">30<span>+</span></div>
+        <div class="stat__label">anos formando<br>gerações em Bauru</div>
+      </div>
+      <div class="stat reveal delay-1">
+        <div class="stat__num" style="font-size:clamp(22px,2.5vw,30px);padding-top:10px">Berçário<br>ao Médio</div>
+        <div class="stat__label" style="margin-top:10px">jornada de até<br>18 anos juntos</div>
+      </div>
+      <div class="stat reveal delay-2">
+        <div class="stat__num">13</div>
+        <div class="stat__label">atividades<br>extracurriculares</div>
+      </div>
+      <div class="stat reveal delay-3">
+        <div class="stat__num">3</div>
+        <div class="stat__label">prédios com<br>infraestrutura completa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     PILARES
+================================================================ -->
+<section class="sec sec--gray" id="pilares">
+  <div class="container">
+    <div class="sec__header sec__header--center">
+      <div class="label reveal">Nossa base</div>
+      <h2 class="h-display reveal delay-1">A formação que vai além<br>do conteúdo</h2>
+      <p class="lead reveal delay-2" style="margin-top:14px">
+        Com princípios, ética e liderança, o Colégio Criativo prepara cada aluno para crescer com responsabilidade, fé e propósito.
+      </p>
+    </div>
+
+    <div class="pilares__grid">
+      <div class="pilar reveal">
+        <div class="pilar__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2 3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg>
+        </div>
+        <h3 class="pilar__title">Princípios</h3>
+        <p class="pilar__desc">Base de caráter e valores que orientam cada decisão, dentro e fora da sala de aula. Formamos pessoas — não só alunos.</p>
+      </div>
+
+      <div class="pilar reveal delay-1">
+        <div class="pilar__icon">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3 class="pilar__title">Ética</h3>
+        <p class="pilar__desc">Formação de como agir no mundo com integridade, respeito e justiça. A ética como prática diária, não como teoria.</p>
+      </div>
+
+      <div class="pilar reveal delay-2">
+        <div class="pilar__icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3 class="pilar__title">Liderança</h3>
+        <p class="pilar__desc">Preparamos protagonistas — alunos que sabem transformar o ambiente ao redor com responsabilidade e visão de futuro.</p>
+      </div>
+
+      <div class="pilar reveal delay-3">
+        <div class="pilar__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="pilar__title">Fé e Propósito</h3>
+        <p class="pilar__desc">Como escola cristã, cultivamos a dimensão espiritual e o senso de propósito. Cada aluno descobre quem é e para onde vai.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     JORNADA COMPLETA
+================================================================ -->
+<section class="sec" id="jornada">
+  <div class="container">
+    <div class="two-col">
+
+      <div class="img-blob reveal">
+        <div class="img-blob__main">
+          <img src="design/fotos/IMG_8530.PNG"
+               alt="Alunos do Colégio Criativo" style="object-position: center top;">
+        </div>
+        <div class="float-card float-card--navy">
+          <div class="float-card__eyebrow">Jornada completa</div>
+          <div class="float-card__title">Até 18 anos<br>de mãos dadas</div>
+          <div class="float-card__tags">
+            <span class="float-card__tag">Berçário</span>
+            <span class="float-card__tag">Fundamental</span>
+            <span class="float-card__tag">Ensino Médio</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="label reveal">Uma escola, uma vida</div>
+        <h2 class="h-display reveal delay-1">Do primeiro passo<br>até o vestibular</h2>
+        <p class="lead reveal delay-2" style="margin-top:14px">
+          O Colégio Criativo está ao lado do seu filho em cada fase. Uma família pode caminhar com o Criativo por até 18 anos — da matrícula no Berçário ao Ensino Médio.
+        </p>
+
+        <div class="steps">
+          <div class="step reveal delay-2">
+            <div class="step__dot">1</div>
+            <div>
+              <h4 class="step__title">Educação Infantil — Balão Encantado</h4>
+              <p class="step__desc">Berçário, Mini Grupo, Maternal I/II, Pré I/II. Os primeiros passos com cuidado, afeto e muito aprendizado lúdico.</p>
+            </div>
+          </div>
+          <div class="step reveal delay-2">
+            <div class="step__dot">2</div>
+            <div>
+              <h4 class="step__title">Ensino Fundamental I — 1º ao 5º ano</h4>
+              <p class="step__desc">Construção das bases do conhecimento, do raciocínio e dos valores. A fase onde o amor por aprender se forma.</p>
+            </div>
+          </div>
+          <div class="step reveal delay-3">
+            <div class="step__dot">3</div>
+            <div>
+              <h4 class="step__title">Ensino Fundamental II — 6º ao 9º ano</h4>
+              <p class="step__desc">Desenvolvimento da identidade, pensamento crítico e protagonismo. O adolescente encontra seu lugar no mundo.</p>
+            </div>
+          </div>
+          <div class="step step--red reveal delay-3">
+            <div class="step__dot">4</div>
+            <div>
+              <h4 class="step__title">Ensino Médio</h4>
+              <p class="step__desc">Preparação completa para o vestibular e para a vida. Líderes formados com princípios para transformar o mundo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     DIFERENCIAIS (navy)
+================================================================ -->
+<section class="sec sec--navy sec--navy-grid" id="diferenciais">
+  <div class="container">
+    <div class="sec__header" style="position:relative;z-index:1;">
+      <div class="label label--gold reveal">Por que o Criativo</div>
+      <h2 class="h-display h-display--white reveal delay-1">O que torna o Criativo<br>único em Bauru</h2>
+      <p class="lead lead--white reveal delay-2" style="margin-top:14px">
+        Três décadas de tradição com inovação pedagógica e infraestrutura que poucas escolas do interior oferecem.
+      </p>
+    </div>
+
+    <div class="difs__grid">
+      <div class="dif-card dif-card--featured reveal">
+        <div class="dif-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <h3 class="dif-card__title">Sistema Mackenzie de Ensino</h3>
+        <p class="dif-card__desc">Parceiro desde 2010, o Sistema Mackenzie traz material didático de excelência e metodologia prática e interdisciplinar — um dos maiores selos educacionais do Brasil dentro das salas do Criativo.</p>
+      </div>
+
+      <div class="dif-card reveal delay-1">
+        <div class="dif-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="dif-card__title">Formação Cristã</h3>
+        <p class="dif-card__desc">Escola confessional de origem presbiteriana. Fé, ética cristã e propósito no currículo — não como adorno, mas como base.</p>
+      </div>
+
+      <div class="dif-card reveal delay-1">
+        <div class="dif-card__icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3 class="dif-card__title">30+ Anos de História</h3>
+        <p class="dif-card__desc">Desde 1994 o Criativo forma gerações de famílias bauruenses. Tradição e confiança construídas ao longo de três décadas.</p>
+      </div>
+
+      <div class="dif-card reveal delay-2">
+        <div class="dif-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3 class="dif-card__title">3 Prédios Completos</h3>
+        <p class="dif-card__desc">Infraestrutura distribuída e adequada para cada faixa etária — da Educação Infantil ao Ensino Médio, com espaços específicos.</p>
+      </div>
+
+      <div class="dif-card reveal delay-2">
+        <div class="dif-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="dif-card__title">Formação Integral</h3>
+        <p class="dif-card__desc">Quatro pilares baseados na UNESCO: aprender a conhecer, a fazer, a viver juntos e a ser. Educação completa do ser humano.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     INFRAESTRUTURA
+================================================================ -->
+<section class="sec" id="infra">
+  <div class="container">
+    <div class="sec__header sec__header--center">
+      <div class="label reveal">Estrutura</div>
+      <h2 class="h-display reveal delay-1">Um ambiente feito<br>para aprender e crescer</h2>
+      <p class="lead reveal delay-2" style="margin-top:14px">
+        Piscina aquecida, laboratórios, CEPEC, cineminha e auditório. Infraestrutura completa para uma educação além da sala de aula.
+      </p>
+    </div>
+
+    <div class="infra__gallery reveal delay-1">
+
+      <!-- A: comunidade / grupo grande -->
+      <div class="infra__item infra__b1">
+        <img src="design/fotos/foto nova - criativo 2.png" alt="Comunidade Colégio Criativo" style="object-position: center top;">
+        <span class="infra__label">Nossa Comunidade</span>
+      </div>
+
+      <!-- B: piscina — célula tall -->
+      <div class="infra__item infra__b2">
+        <img src="design/fotos/IMG_3838.PNG" alt="Piscina aquecida 85.000 litros">
+        <span class="infra__label">Piscina Aquecida 85.000 L</span>
+      </div>
+
+      <!-- C: ballet -->
+      <div class="infra__item infra__b3">
+        <img src="design/fotos/IMG_8427.PNG" alt="Aula de ballet" style="object-position: center 55%;">
+        <span class="infra__label">Ballet</span>
+      </div>
+
+      <!-- D: judô -->
+      <div class="infra__item infra__b4">
+        <img src="design/fotos/IMG_5294.PNG" alt="Aula de judô" style="object-position: center 35%;">
+        <span class="infra__label">Judô</span>
+      </div>
+
+      <!-- E: espaço pedagógico — wide -->
+      <div class="infra__item infra__b5">
+        <img src="design/fotos/IMG_8535.PNG" alt="Espaço pedagógico" style="object-position: center 75%;">
+        <span class="infra__label">Espaço Pedagógico</span>
+      </div>
+
+      <!-- F: quadra -->
+      <div class="infra__item infra__b6">
+        <img src="design/fotos/IMG_5296.PNG" alt="Quadra de esportes" style="object-position: center 50%;">
+        <span class="infra__label">Quadra de Esportes</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     CEPEC
+================================================================ -->
+<section class="sec sec--gray" id="cepec">
+  <div class="container">
+    <div class="two-col two-col--flip">
+
+      <div>
+        <div class="label reveal">Diferencial único</div>
+        <h2 class="h-display reveal delay-1">CEPEC — Centro de<br>Estudo e Pesquisa</h2>
+        <p class="lead reveal delay-2" style="margin-top:14px">
+          Uma área verde exclusiva onde os alunos têm aulas semanais — cultivando a horta, interagindo com animais e desenvolvendo consciência ambiental na prática, não na teoria.
+        </p>
+
+        <div class="cepec-quote reveal delay-3">
+          <p>A vida depende do ambiente e o ambiente depende de cada cidadão. No CEPEC, essa consciência é plantada desde cedo — literalmente.</p>
+        </div>
+      </div>
+
+      <div class="img-blob reveal delay-1">
+        <div class="img-blob__main">
+          <img src="design/fotos/IMG_4086.PNG"
+               alt="CEPEC - aulas ao ar livre" style="object-position: center top;">
+        </div>
+        <div class="float-card float-card--gold" style="bottom:28px;right:-16px;">
+          <div class="float-card__eyebrow" style="color:rgba(9,29,79,.55)">Exclusivo</div>
+          <div class="float-card__title" style="color:var(--navy)">Aulas semanais<br>ao ar livre no CEPEC</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     EXTRACURRICULARES
+================================================================ -->
+<section class="sec" id="extra">
+  <div class="container">
+    <div class="sec__header sec__header--center">
+      <div class="label reveal">Além da sala de aula</div>
+      <h2 class="h-display reveal delay-1">13 atividades para talentos<br>além do currículo</h2>
+      <p class="lead reveal delay-2" style="margin-top:14px">
+        Esporte, arte, tecnologia e formação de caráter. Uma grade extracurricular completa para desenvolver o aluno em todas as dimensões.
+      </p>
+    </div>
+
+    <div class="extra__tags reveal delay-2">
+      <span class="extra__tag"><span class="extra__dot"></span>Futsal</span>
+      <span class="extra__tag"><span class="extra__dot"></span>Natação</span>
+      <span class="extra__tag"><span class="extra__dot"></span>Ballet</span>
+      <span class="extra__tag"><span class="extra__dot"></span>Judô</span>
+      <span class="extra__tag"><span class="extra__dot"></span>Ética Cristã</span>
+      <span class="extra__tag"><span class="extra__dot"></span>Informática</span>
+      <span class="extra__tag"><span class="extra__dot"></span>Street Dance</span>
+      <span class="extra__tag"><span class="extra__dot"></span>Clube da Matemática</span>
+      <span class="extra__tag"><span class="extra__dot"></span>Xadrez</span>
+      <span class="extra__tag"><span class="extra__dot"></span>Robótica</span>
+      <span class="extra__tag"><span class="extra__dot"></span>Musicalização</span>
+      <span class="extra__tag"><span class="extra__dot"></span>Cartum</span>
+      <span class="extra__tag"><span class="extra__dot"></span>Kickboxing</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     MACKENZIE STRIP
+================================================================ -->
+<section class="mack">
+  <div class="container">
+    <div class="mack__inner reveal">
+      <div class="mack__badge">
+        <div class="mack__name">Mackenzie</div>
+        <div class="mack__sub">Sistema de Ensino</div>
+      </div>
+      <div class="mack__div"></div>
+      <div class="mack__text">
+        <h3>Parceiro pedagógico desde 2010</h3>
+        <p>Um dos maiores grupos educacionais do Brasil. Material didático de excelência, metodologia prática e interdisciplinar — trazidos para dentro das salas do Criativo há mais de uma década.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     DEPOIMENTOS
+================================================================ -->
+<section class="sec" id="depoimentos">
+  <div class="container">
+    <div class="sec__header sec__header--center">
+      <div class="label reveal">Famílias Criativo</div>
+      <h2 class="h-display reveal delay-1">Quem caminha conosco<br>conta a história</h2>
+      <p class="lead reveal delay-2" style="margin-top:14px">
+        Depoimentos de famílias que confiam no Criativo para formar o futuro dos seus filhos.
+      </p>
+    </div>
+
+    <div class="deps__grid">
+      <div class="dep reveal">
+        <div class="dep__stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <span class="dep__quote">"</span>
+        <p class="dep__text">Minha filha entrou no Balão Encantado com 2 anos e hoje está no 5º ano. Ver o cuidado da escola com ela em cada fase me dá uma segurança que não tem preço. O Criativo realmente caminha junto com a gente.</p>
+        <div class="dep__author">
+          <div class="dep__avatar"><img src="https://i.pravatar.cc/88?img=47" alt="Ana Paula M."></div>
+          <div>
+            <div class="dep__name">Ana Paula M.</div>
+            <div class="dep__role">Mãe · família Criativo há 7 anos</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dep dep--navy reveal delay-1">
+        <div class="dep__stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <span class="dep__quote">"</span>
+        <p class="dep__text">O diferencial do Criativo é que eles formam caráter, não só nota. Meu filho aprendeu sobre responsabilidade, ética e fé de uma forma natural, que faz sentido na vida dele. Isso não tem no currículo — está na cultura da escola.</p>
+        <div class="dep__author">
+          <div class="dep__avatar"><img src="https://i.pravatar.cc/88?img=12" alt="Roberto F."></div>
+          <div>
+            <div class="dep__name">Roberto F.</div>
+            <div class="dep__role">Pai · família Criativo há 10 anos</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dep reveal delay-2">
+        <div class="dep__stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <span class="dep__quote">"</span>
+        <p class="dep__text">Visitamos três escolas antes de decidir. O Criativo foi o único onde a gente sentiu acolhimento real — fomos recebidos como família, não como clientes. No primeiro dia do meu filho, a diretora sabia o nome dele.</p>
+        <div class="dep__author">
+          <div class="dep__avatar"><img src="https://i.pravatar.cc/88?img=32" alt="Carla e João S."></div>
+          <div>
+            <div class="dep__name">Carla e João S.</div>
+            <div class="dep__role">Pais · novos na família Criativo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     FAQ
+================================================================ -->
+<section class="sec sec--gray" id="faq">
+  <div class="container">
+    <div class="sec__header sec__header--center">
+      <div class="label reveal">Dúvidas frequentes</div>
+      <h2 class="h-display reveal delay-1">Perguntas e respostas</h2>
+      <p class="lead reveal delay-2" style="margin-top:14px">Escolha o seu perfil e encontre as respostas.</p>
+    </div>
+
+    <div class="faq__tabs reveal">
+      <button class="faq__tab active" data-tab="nova">Família Nova</button>
+      <button class="faq__tab"        data-tab="renova">Já sou família Criativo</button>
+    </div>
+
+    <!-- Painel: Família nova -->
+    <div class="faq__panel active" data-panel="nova">
+      <div class="faq__item">
+        <button class="faq__q">
+          Como funciona o processo de matrícula?
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">O processo começa com uma visita à escola, onde você conhece a proposta pedagógica, as instalações e conversa com a equipe. Em seguida, preenchemos o formulário de interesse e iniciamos o processo formal. Entre em contato pelo WhatsApp ou telefone para agendar.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">
+          Quais segmentos têm vagas disponíveis?
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">O Colégio Criativo atende do Berçário ao Ensino Médio — Educação Infantil (Balão Encantado), Fundamental I (1º–5º), Fundamental II (6º–9º) e Ensino Médio. As vagas são limitadas por série; consulte a disponibilidade diretamente com a secretaria.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">
+          A escola oferece período integral?
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">Para informações sobre período integral, semi-integral e horários por segmento, entre em contato com a secretaria. Temos opções variadas de acordo com a necessidade de cada família.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">
+          O que é o Sistema Mackenzie e o que representa?
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">O Sistema Mackenzie é um dos maiores grupos educacionais do Brasil, com origem na Universidade Mackenzie de São Paulo. Desde 2010, o Criativo usa o material didático e a metodologia Mackenzie — abordagem prática, interdisciplinar e reconhecida em todo o país.</div></div>
+      </div>
+    </div>
+
+    <!-- Painel: Já sou família -->
+    <div class="faq__panel" data-panel="renova">
+      <div class="faq__item">
+        <button class="faq__q">
+          Até quando posso renovar a matrícula?
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">O prazo de rematrícula tem data limite — renovar dentro do prazo garante sua vaga e pode garantir condições especiais da campanha. Entre em contato com a secretaria para confirmar as datas.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">
+          Há benefício especial para quem renova dentro do prazo?
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">Sim! Famílias que renovam dentro do prazo da campanha têm acesso a condições especiais. Fale com a secretaria para conhecer os detalhes da oferta exclusiva de rematrícula.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">
+          Como é o processo de renovação?
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">O processo é simplificado para quem já é família Criativo. Entre em contato via WhatsApp ou telefone, informe a série do seu filho para o próximo ano, e a equipe vai guiar você por cada etapa.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">
+          O que acontece se perder o prazo de rematrícula?
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">Após o prazo, a vaga pode ser disponibilizada para novas famílias, e as condições especiais da campanha deixam de ser garantidas. Recomendamos renovar o quanto antes para assegurar a continuidade sem preocupação.</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================================================================
+     CTA FINAL
+================================================================ -->
+<section class="cta-final" id="matricula">
+  <div class="container">
+    <div class="cta-final__inner">
+
+      <!-- Logos parceria -->
+      <div class="cta-final__logos reveal">
+        <img src="design/assets/logo_branco.png" alt="Colégio Criativo" style="height:50px;width:auto;">
+        <div class="cta-final__logo-divider"></div>
+        <img src="design/assets/logo_mackenzie.png" alt="Sistema Mackenzie de Ensino" style="height:30px;width:auto;opacity:.7;">
+      </div>
+
+      <div class="cta-final__label reveal">Matrículas e Rematrículas 2025</div>
+
+      <h2 class="cta-final__title reveal delay-1">
+        Continue essa jornada.<br><em>De mãos dadas.</em>
+      </h2>
+      <p class="cta-final__sub reveal delay-2">
+        Não deixe o prazo passar. Garanta já a vaga do seu filho no Colégio Criativo — a escola que caminha junto com a sua família.
+      </p>
+
+      <!-- Dois caminhos -->
+      <div class="cta-final__cards reveal delay-2">
+
+        <div class="cta-card">
+          <span class="cta-card__tag">Família nova</span>
+          <div class="cta-card__title">Quero conhecer o Criativo</div>
+          <p class="cta-card__desc">Agende uma visita guiada e venha descobrir por que tantas famílias escolhem o Criativo há mais de 30 anos.</p>
+          <a href="https://wa.me/551432396060?text=Olá!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Colégio%20Criativo." class="btn btn-red">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Agendar visita pelo WhatsApp
+          </a>
+        </div>
+
+        <div class="cta-card cta-card--red" id="rematricula">
+          <span class="cta-card__tag">Já sou família Criativo</span>
+          <div class="cta-card__title">Renovar minha matrícula</div>
+          <p class="cta-card__desc">Continue essa jornada. Garanta a vaga do seu filho e aproveite as condições especiais para quem renova.</p>
+          <a href="https://wa.me/551432396060?text=Olá!%20Gostaria%20de%20renovar%20a%20matrícula%20do%20meu%20filho." class="btn btn-outline-white" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Renovar matrícula agora
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Rodapé de contatos -->
+    <div class="cta-final__strip">
+      <div class="cta-final__contacts">
+        <div class="contact-row">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          Al. dos Heliotropos, 3-28 — Pq. Vista Alegre, Bauru/SP
+        </div>
+        <div class="contact-row">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82A16 16 0 0 0 16 16.91l1.1-.89a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <a href="tel:+551432396060">(14) 3239-6060</a>
+        </div>
+        <div class="contact-row">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="m22 3-10 9L2 3"/>
+          </svg>
+          <a href="mailto:contato@colegiocriativo.com.br">contato@colegiocriativo.com.br</a>
+        </div>
+      </div>
+      <div class="cta-final__copy">© 2025 Colégio Criativo · Bauru/SP</div>
+      <div class="cta-final__mack">
+        <img src="design/assets/logo_mackenzie.png" alt="Sistema Mackenzie de Ensino" style="height:26px;width:auto;opacity:.4;">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<!-- Sticky bar (mobile) -->
+<div class="sticky-bar" id="stickyBar">
+  <a href="https://wa.me/551432396060?text=Olá!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Colégio%20Criativo." class="btn btn-red" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Agende visita
+  </a>
+  <a href="https://wa.me/551432396060?text=Olá!%20Gostaria%20de%20renovar%20a%20matrícula%20do%20meu%20filho." class="btn btn-outline-navy" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Renovar matrícula
+  </a>
+</div>
+
+
+<!-- ================================================================
+     SCRIPTS
+================================================================ -->
+<script>
+  /* Header scroll */
+  const header = document.getElementById('header');
+  const onScroll = () => header.classList.toggle('stuck', window.scrollY > 56);
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* Mobile drawer */
+  const drawer     = document.getElementById('drawer');
+  const burgerBtn  = document.getElementById('burgerBtn');
+  const drawerClose= document.getElementById('drawerClose');
+
+  const openDrawer  = () => { drawer.classList.add('open');    document.body.style.overflow = 'hidden'; };
+  const closeDrawer = () => { drawer.classList.remove('open'); document.body.style.overflow = ''; };
+
+  burgerBtn.addEventListener('click', openDrawer);
+  drawerClose.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  /* Reveal on scroll */
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  /* FAQ tabs */
+  document.querySelectorAll('.faq__tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.faq__tab, .faq__panel').forEach(el => el.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`[data-panel="${tab.dataset.tab}"]`).classList.add('active');
+    });
+  });
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq__q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item   = btn.closest('.faq__item');
+      const answer = item.querySelector('.faq__a');
+      const isOpen = item.classList.contains('open');
+
+      // close all in this panel
+      btn.closest('.faq__panel').querySelectorAll('.faq__item.open').forEach(open => {
+        open.classList.remove('open');
+        open.querySelector('.faq__a').style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* Sticky bar — hide while hero is visible */
+  const stickyBar = document.getElementById('stickyBar');
+  const heroObs = new IntersectionObserver(([e]) => {
+    stickyBar.style.display = e.isIntersecting ? 'none' : '';
+  }, { threshold: 0 });
+  heroObs.observe(document.getElementById('hero'));
+</script>
+
+</body>
+</html>
