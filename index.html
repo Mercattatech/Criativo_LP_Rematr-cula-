@@ -844,71 +844,100 @@
     /* ============================================================
        FAQ
     ============================================================ */
-    .faq__tabs {
-      display:flex;
-      gap:8px;
-      justify-content:center;
-      margin-bottom:28px;
+    .faq__cats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 36px;
     }
-    .faq__tab {
-      font-family:var(--font-display);
-      font-size:13px;
-      font-weight:700;
-      padding:9px 22px;
-      border-radius:100px;
-      border:2px solid var(--navy);
-      color:var(--navy);
-      cursor:pointer;
-      transition:var(--t);
+    .faq__cat {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: 8px 18px;
+      border-radius: 100px;
+      border: 1.5px solid rgba(14,42,110,.2);
+      background: transparent;
+      color: var(--navy);
+      cursor: pointer;
+      transition: var(--t);
+      white-space: nowrap;
     }
-    .faq__tab.active { background:var(--navy); color:var(--white); }
+    .faq__cat:hover { border-color: var(--navy); }
+    .faq__cat.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
 
-    .faq__panel { display:none; max-width:740px; margin:0 auto; }
-    .faq__panel.active { display:block; }
+    .faq__panel { display: none; max-width: 760px; margin: 0 auto; }
+    .faq__panel.active { display: block; }
+
+    .faq__info-block {
+      background: var(--white);
+      border-radius: var(--r-sm);
+      padding: 24px 28px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--gray-400);
+      line-height: 1.85;
+    }
+    .faq__info-block strong { color: var(--navy); display: block; margin-bottom: 10px; font-family: var(--font-display); font-size: 15px; }
+    .faq__info-block ul { padding-left: 20px; margin: 8px 0; }
+    .faq__info-block ul li { margin-bottom: 4px; }
+    .faq__sub-section { margin-bottom: 6px; }
+    .faq__sub-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin: 18px 0 6px 4px;
+    }
 
     .faq__item {
-      background:var(--white);
-      border-radius:var(--r-sm);
-      margin-bottom:6px;
-      overflow:hidden;
+      background: var(--white);
+      border-radius: var(--r-sm);
+      margin-bottom: 6px;
+      overflow: hidden;
     }
     .faq__q {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:18px 22px;
-      font-family:var(--font-display);
-      font-size:15px;
-      font-weight:700;
-      color:var(--navy);
-      text-align:left;
-      width:100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      text-align: left;
+      width: 100%;
+      cursor: pointer;
+      background: none;
+      border: none;
     }
     .faq__icon {
-      width:24px; height:24px;
-      border-radius:50%;
-      background:var(--gray-100);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-shrink:0;
-      transition:var(--t);
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--t);
     }
-    .faq__icon svg { width:13px; height:13px; stroke:var(--navy); transition:var(--t); }
-    .faq__item.open .faq__icon { background:var(--navy); }
-    .faq__item.open .faq__icon svg { stroke:var(--white); transform:rotate(45deg); }
-    .faq__a {
-      max-height:0;
-      overflow:hidden;
-      transition:max-height .4s var(--ease);
-    }
+    .faq__icon svg { width: 13px; height: 13px; stroke: var(--navy); transition: var(--t); }
+    .faq__item.open .faq__icon { background: var(--navy); }
+    .faq__item.open .faq__icon svg { stroke: var(--white); transform: rotate(45deg); }
+    .faq__a { max-height: 0; overflow: hidden; transition: max-height .4s var(--ease); }
     .faq__a-inner {
-      padding:0 22px 18px;
-      font-size:14px;
-      color:var(--gray-400);
-      line-height:1.8;
+      padding: 0 22px 18px;
+      font-size: 14px;
+      color: var(--gray-400);
+      line-height: 1.8;
     }
+    .faq__footer { text-align: center; margin-top: 36px; }
+    .faq__footer a { font-size: 14px; }
 
     /* ============================================================
        CTA FINAL
@@ -1931,78 +1960,15 @@
     <div class="sec__header sec__header--center">
       <div class="label reveal">Dúvidas frequentes</div>
       <h2 class="h-display reveal delay-1">Perguntas e respostas</h2>
-      <p class="lead reveal delay-2" style="margin-top:14px">Escolha o seu perfil e encontre as respostas.</p>
+      <p class="lead reveal delay-2" style="margin-top:14px">Selecione uma categoria e encontre as respostas que precisa.</p>
     </div>
 
-    <div class="faq__tabs reveal">
-      <button class="faq__tab active" data-tab="nova">Família Nova</button>
-      <button class="faq__tab"        data-tab="renova">Já sou família Criativo</button>
-    </div>
+    <div class="faq__cats reveal" id="faqCats"></div>
+    <div id="faqPanels"></div>
 
-    <!-- Painel: Família nova -->
-    <div class="faq__panel active" data-panel="nova">
-      <div class="faq__item">
-        <button class="faq__q">
-          Como funciona o processo de matrícula?
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq__a"><div class="faq__a-inner">O processo começa com uma visita à escola, onde você conhece a proposta pedagógica, as instalações e conversa com a equipe. Em seguida, preenchemos o formulário de interesse e iniciamos o processo formal. Entre em contato pelo WhatsApp ou telefone para agendar.</div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q">
-          Quais segmentos têm vagas disponíveis?
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq__a"><div class="faq__a-inner">O Colégio Criativo atende do Berçário ao Ensino Médio — Educação Infantil (Balão Encantado), Fundamental I (1º–5º), Fundamental II (6º–9º) e Ensino Médio. As vagas são limitadas por série; consulte a disponibilidade diretamente com a secretaria.</div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q">
-          A escola oferece período integral?
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq__a"><div class="faq__a-inner">Para informações sobre período integral, semi-integral e horários por segmento, entre em contato com a secretaria. Temos opções variadas de acordo com a necessidade de cada família.</div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q">
-          O que é o Sistema Mackenzie e o que representa?
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq__a"><div class="faq__a-inner">O Sistema Mackenzie é um dos maiores grupos educacionais do Brasil, com origem na Universidade Mackenzie de São Paulo. Desde 2010, o Criativo usa o material didático e a metodologia Mackenzie — abordagem prática, interdisciplinar e reconhecida em todo o país.</div></div>
-      </div>
+    <div class="faq__footer reveal">
+      <a href="faq.html" class="btn btn-outline-navy">Ver todas as dúvidas →</a>
     </div>
-
-    <!-- Painel: Já sou família -->
-    <div class="faq__panel" data-panel="renova">
-      <div class="faq__item">
-        <button class="faq__q">
-          Até quando posso renovar a matrícula?
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq__a"><div class="faq__a-inner">O prazo de rematrícula tem data limite — renovar dentro do prazo garante sua vaga e pode garantir condições especiais da campanha. Entre em contato com a secretaria para confirmar as datas.</div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q">
-          Há benefício especial para quem renova dentro do prazo?
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq__a"><div class="faq__a-inner">Sim! Famílias que renovam dentro do prazo da campanha têm acesso a condições especiais. Fale com a secretaria para conhecer os detalhes da oferta exclusiva de rematrícula.</div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q">
-          Como é o processo de renovação?
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq__a"><div class="faq__a-inner">O processo é simplificado para quem já é família Criativo. Entre em contato via WhatsApp ou telefone, informe a série do seu filho para o próximo ano, e a equipe vai guiar você por cada etapa.</div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q">
-          O que acontece se perder o prazo de rematrícula?
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq__a"><div class="faq__a-inner">Após o prazo, a vaga pode ser disponibilizada para novas famílias, e as condições especiais da campanha deixam de ser garantidas. Recomendamos renovar o quanto antes para assegurar a continuidade sem preocupação.</div></div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -2138,6 +2104,221 @@
      SCRIPTS
 ================================================================ -->
 <script>
+  /* ── FAQ Data ─────────────────────────────────────────────── */
+  const FAQ_CATS = [
+    {
+      id: 'infantil', label: 'Educação Infantil', desc: 'Berçário ao Pré II',
+      items: [
+        { q: 'Como funciona o período de adaptação?', a: 'Cada criança possui seu tempo. A adaptação é feita de forma gradual, respeitando as necessidades da família e do aluno.' },
+        { q: 'Como é a alimentação?', a: 'Oferecemos alimentação balanceada, preparada com cuidado e acompanhada pela equipe. Respeitamos restrições alimentares mediante orientação médica.' },
+        { q: 'Como é a rotina da criança?', a: 'A rotina é organizada com momentos de aprendizagem, brincadeiras, alimentação, higiene, descanso e atividades ao ar livre.' },
+        { q: 'Como acontece o desfralde?', a: 'Trabalhamos em parceria com a família, respeitando o desenvolvimento e o tempo de cada criança.' },
+        { q: 'Meu filho ainda usa chupeta ou mamadeira. Há problema?', a: 'A escola acompanha esse processo juntamente com a família, incentivando a retirada de forma gradual e respeitosa.' },
+        { q: 'Como a escola se comunica com os pais?', a: 'A comunicação acontece pelo aplicativo escolar e pela coordenação, garantindo informações rápidas e organizadas.' },
+        { q: 'Como vocês lidam quando a criança chora?', a: 'Nossa equipe acolhe a criança com carinho e segurança até que ela se sinta confortável no ambiente escolar.' },
+        { q: 'Como são os professores?', a: 'Contamos com professores qualificados, auxiliares em sala e acompanhamento constante da coordenação pedagógica.' },
+        { q: 'Como funciona a segurança?', a: 'Possuímos controle de entrada e saída, equipe treinada e protocolos específicos para garantir a segurança das crianças.' },
+        { q: 'Meu filho vai aprender brincando?', a: 'Sim. Na Educação Infantil, o brincar é uma ferramenta essencial para o desenvolvimento cognitivo, emocional, social e motor.' },
+        { q: 'Vocês trabalham valores?', a: 'Sim. Desenvolvemos diariamente valores cristãos, respeito, autonomia, responsabilidade e convivência.' },
+        { q: 'Como é o inglês?', a: 'O inglês faz parte da rotina da criança de maneira lúdica, favorecendo a aquisição natural do idioma.' },
+        { q: 'Meu filho dorme na escola?', a: 'As crianças que permanecem em período integral possuem momento de descanso em ambiente adequado.' },
+        { q: 'Como funciona o período integral?', a: 'O integral oferece atividades pedagógicas, recreativas, alimentação e acompanhamento durante todo o dia.' },
+        { q: 'Como vocês acompanham o desenvolvimento da criança?', a: 'O desenvolvimento é observado diariamente e compartilhado com a família por meio de reuniões e avaliações descritivas.' },
+      ]
+    },
+    {
+      id: 'fund2', label: 'Fundamental II', desc: '6º ao 9º ano',
+      items: [
+        { q: 'Como vocês ajudam na adaptação ao Fundamental II?', a: 'Acompanhamos o aluno de perto, auxiliando na organização da rotina e na adaptação aos diferentes professores.' },
+        { q: 'Como funciona o sistema de avaliações?', a: 'As avaliações são distribuídas ao longo do trimestre, valorizando o processo de aprendizagem.' },
+        { q: 'Como é o acompanhamento do aluno?', a: 'Professores e coordenação acompanham continuamente o desempenho acadêmico e comportamental.' },
+        { q: 'Como funciona o uso da tecnologia?', a: 'A tecnologia é utilizada como ferramenta pedagógica, sempre com intencionalidade educativa.' },
+        { q: 'Como vocês trabalham a disciplina?', a: 'A disciplina é construída com diálogo, responsabilidade, respeito e parceria com a família.' },
+        { q: 'Como funciona o inglês?', a: 'O aluno amplia a comunicação oral, leitura, escrita e compreensão da língua inglesa.' },
+        { q: 'Como vocês trabalham orientação profissional?', a: 'Desenvolvemos atividades que ajudam o estudante a conhecer suas habilidades e possibilidades futuras.' },
+        { q: 'Existe acompanhamento emocional?', a: 'Sim. A coordenação acompanha os alunos e realiza intervenções sempre que necessário.' },
+        { q: 'Como é preparada a transição para o Ensino Médio?', a: 'Trabalhamos autonomia, responsabilidade e aprofundamento dos conteúdos.' },
+        { q: 'Há projetos interdisciplinares?', a: 'Sim. Os alunos participam de projetos que integram diferentes áreas do conhecimento.' },
+        { q: 'Como funciona a comunicação com a família?', a: 'Mantemos contato constante pelo aplicativo escolar e coordenação.' },
+        { q: 'Como vocês lidam com bullying?', a: 'Atuamos preventivamente e intervimos imediatamente sempre que necessário.' },
+        { q: 'Como funciona o estudo para olimpíadas e concursos?', a: 'Incentivamos e preparamos os alunos para desafios acadêmicos, ampliando seu desenvolvimento.' },
+        { q: 'Como trabalham os valores?', a: 'Os princípios cristãos orientam nossas ações e convivência escolar.' },
+        { q: 'Qual o diferencial do Fundamental II?', a: 'Formação acadêmica consistente aliada ao desenvolvimento da autonomia, pensamento crítico e valores.' },
+      ]
+    },
+    {
+      id: 'medio', label: 'Ensino Médio', desc: '1ª à 3ª série',
+      items: [
+        { q: 'Como é a preparação para o ENEM e vestibulares?', a: 'O aluno possui preparação contínua, simulados, acompanhamento pedagógico e estratégias específicas para os principais exames.' },
+        { q: 'Como funciona o material didático?', a: 'Utilizamos um sistema atualizado, alinhado às competências exigidas pelos vestibulares e ENEM.' },
+        { q: 'Quantos simulados são realizados?', a: 'Durante o ano, os alunos participam de simulados que permitem acompanhar seu desempenho e evolução.' },
+        { q: 'Existe orientação profissional?', a: 'Sim. Desenvolvemos ações voltadas ao projeto de vida e escolha da carreira.' },
+        { q: 'Como funciona o acompanhamento pedagógico?', a: 'A coordenação acompanha individualmente o rendimento e orienta estratégias de estudo.' },
+        { q: 'Como vocês trabalham a saúde emocional?', a: 'Incentivamos o equilíbrio entre desempenho acadêmico, organização e bem-estar emocional.' },
+        { q: 'Como funciona o inglês?', a: 'O ensino busca desenvolver competências importantes para a vida acadêmica e profissional.' },
+        { q: 'Como é a rotina de estudos?', a: 'O aluno é incentivado a criar hábitos de estudo, planejamento e autonomia.' },
+        { q: 'Como vocês acompanham os resultados?', a: 'Monitoramos continuamente notas, simulados e evolução do estudante.' },
+        { q: 'Como funciona a comunicação com as famílias?', a: 'A família acompanha o desempenho por meio do aplicativo escolar, reuniões e contato com a coordenação.' },
+        { q: 'O colégio prepara apenas para vestibular?', a: 'Não. Também desenvolvemos competências, valores, liderança, pensamento crítico e formação humana.' },
+        { q: 'Como trabalham a formação cristã?', a: 'Os princípios bíblicos fazem parte da formação ética e das relações dentro da escola.' },
+        { q: 'Como são os professores?', a: 'Nossa equipe é formada por profissionais especializados, experientes e comprometidos com a excelência acadêmica.' },
+        { q: 'Como vocês auxiliam alunos com dificuldades?', a: 'Identificamos as necessidades e orientamos estratégias para potencializar o desempenho.' },
+        { q: 'Qual o diferencial do Ensino Médio?', a: 'Preparação acadêmica de excelência, formação integral, valores cristãos e acompanhamento próximo do aluno em uma das fases mais importantes de sua vida.' },
+      ]
+    },
+    {
+      id: 'secretaria', label: 'Secretaria', desc: 'Documentação e matrícula',
+      info: [
+        {
+          title: 'Documentos necessários para matrícula',
+          body: `<p><strong style="font-weight:700;color:var(--navy)">Do aluno:</strong></p>
+<ul><li>RG</li><li>CPF</li><li>Certidão de nascimento</li><li>Carteira de vacinação atualizada</li></ul>
+<p style="margin-top:12px"><strong style="font-weight:700;color:var(--navy)">Dos responsáveis:</strong></p>
+<ul><li>RG</li><li>CPF</li><li>Comprovante de residência atualizado</li></ul>`
+        }
+      ]
+    },
+    {
+      id: 'financeiro', label: 'Financeiro', desc: 'Tesouraria e pagamentos',
+      info: [
+        {
+          title: 'Tesouraria e Financeiro',
+          body: `<p>Nossa tesouraria está disponível para atender as famílias tanto presencialmente quanto on-line, oferecendo praticidade e agilidade no atendimento.</p>
+<p style="margin-top:10px">Durante a visita, os pais são convidados a conhecer toda a estrutura e a proposta pedagógica do colégio e, ao final, recebem todas as informações sobre valores e condições de matrícula.</p>
+<p style="margin-top:10px">As mensalidades são realizadas por meio de boletos bancários, que podem ser acessados de forma prática pelo aplicativo da escola, onde a família também acompanha informações financeiras e outros serviços relacionados à vida escolar do aluno.</p>`
+        }
+      ]
+    },
+    {
+      id: 'horarios', label: 'Horários', desc: 'Por segmento',
+      info: [
+        {
+          title: 'Educação Infantil',
+          body: `<ul>
+<li><strong>Manhã:</strong> 7h30 às 11h30</li>
+<li><strong>Tarde:</strong> 13h às 17h</li>
+</ul>
+<p style="margin-top:10px"><strong style="color:var(--navy)">Período integral:</strong></p>
+<ul>
+<li>Integral I: até as 13h</li>
+<li>Integral II: até as 15h</li>
+<li>Integral III: até as 18h30</li>
+</ul>`
+        },
+        {
+          title: 'Ensino Fundamental I (1º ao 5º ano)',
+          body: `<ul>
+<li><strong>Manhã:</strong> 7h10 às 11h40</li>
+<li><strong>Tarde:</strong> 13h às 17h30</li>
+</ul>
+<p style="margin-top:10px"><strong style="color:var(--navy)">Período integral:</strong></p>
+<ul>
+<li>Integral I: até as 13h</li>
+<li>Integral II: até as 15h</li>
+<li>Integral III: até as 18h30</li>
+</ul>`
+        },
+        {
+          title: 'Ensino Fundamental II (6º ao 9º ano)',
+          body: `<p><strong style="color:var(--navy)">Manhã:</strong></p>
+<ul>
+<li>Segunda, terça e quarta-feira: 7h10 às 12h30</li>
+<li>Quinta e sexta-feira: 7h10 às 11h40</li>
+</ul>
+<p style="margin-top:10px"><strong style="color:var(--navy)">Tarde:</strong></p>
+<ul>
+<li>Segunda, terça e quarta-feira: 13h às 18h20</li>
+<li>Quinta e sexta-feira: 13h às 17h30</li>
+</ul>`
+        },
+        {
+          title: 'Ensino Médio',
+          body: `<ul>
+<li><strong>Aulas regulares:</strong> 7h10 às 12h30</li>
+</ul>
+<p style="margin-top:10px">Atividades complementares no período da tarde:</p>
+<ul>
+<li>Produção de redação</li>
+<li>Educação Física</li>
+<li>Aulas de aprofundamento</li>
+<li>Projetos e atividades pedagógicas voltadas ao ENEM e vestibulares</li>
+</ul>`
+        }
+      ]
+    },
+    {
+      id: 'cantina', label: 'Cantina', desc: 'Alimentação e serviços',
+      items: [
+        { q: 'Como funciona a cantina?', a: 'A cantina é terceirizada e oferece opções variadas, priorizando alimentos mais saudáveis. Os alunos do 1º ano podem realizar compras na cantina às sextas-feiras, sempre com acompanhamento da equipe escolar. Já os alunos do 2º ao 5º ano têm acesso diário à cantina durante o intervalo.' },
+      ]
+    },
+  ];
+
+  /* ── FAQ Render ────────────────────────────────────────────── */
+  const PLUS_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`;
+
+  function buildFaqPanel(cat) {
+    let html = '';
+    if (cat.items) {
+      cat.items.forEach(({q, a}) => {
+        html += `<div class="faq__item">
+          <button class="faq__q">${q}<span class="faq__icon">${PLUS_ICON}</span></button>
+          <div class="faq__a"><div class="faq__a-inner">${a}</div></div>
+        </div>`;
+      });
+    }
+    if (cat.info) {
+      cat.info.forEach(({title, body}) => {
+        html += `<div class="faq__info-block"><strong>${title}</strong>${body}</div>`;
+      });
+    }
+    return html;
+  }
+
+  function initFaq(catsEl, panelsEl) {
+    if (!catsEl || !panelsEl) return;
+    FAQ_CATS.forEach((cat, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'faq__cat' + (i === 0 ? ' active' : '');
+      btn.dataset.cat = cat.id;
+      btn.innerHTML = `${cat.label} <span style="font-weight:400;opacity:.6;font-size:11px">${cat.desc}</span>`;
+      catsEl.appendChild(btn);
+
+      const panel = document.createElement('div');
+      panel.className = 'faq__panel' + (i === 0 ? ' active' : '');
+      panel.dataset.panel = cat.id;
+      panel.innerHTML = buildFaqPanel(cat);
+      panelsEl.appendChild(panel);
+    });
+
+    catsEl.addEventListener('click', e => {
+      const btn = e.target.closest('.faq__cat');
+      if (!btn) return;
+      catsEl.querySelectorAll('.faq__cat').forEach(b => b.classList.remove('active'));
+      panelsEl.querySelectorAll('.faq__panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      panelsEl.querySelector(`[data-panel="${btn.dataset.cat}"]`).classList.add('active');
+    });
+
+    panelsEl.addEventListener('click', e => {
+      const q = e.target.closest('.faq__q');
+      if (!q) return;
+      const item = q.closest('.faq__item');
+      const answer = item.querySelector('.faq__a');
+      const isOpen = item.classList.contains('open');
+      item.closest('.faq__panel').querySelectorAll('.faq__item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq__a').style.maxHeight = '0';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  }
+
+  initFaq(document.getElementById('faqCats'), document.getElementById('faqPanels'));
+
   /* ── Modal ────────────────────────────────────────────────── */
   const overlay    = document.getElementById('modalOverlay');
   const modalClose = document.getElementById('modalClose');
@@ -2277,34 +2458,6 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-  /* FAQ tabs */
-  document.querySelectorAll('.faq__tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.faq__tab, .faq__panel').forEach(el => el.classList.remove('active'));
-      tab.classList.add('active');
-      document.querySelector(`[data-panel="${tab.dataset.tab}"]`).classList.add('active');
-    });
-  });
-
-  /* FAQ accordion */
-  document.querySelectorAll('.faq__q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item   = btn.closest('.faq__item');
-      const answer = item.querySelector('.faq__a');
-      const isOpen = item.classList.contains('open');
-
-      // close all in this panel
-      btn.closest('.faq__panel').querySelectorAll('.faq__item.open').forEach(open => {
-        open.classList.remove('open');
-        open.querySelector('.faq__a').style.maxHeight = null;
-      });
-
-      if (!isOpen) {
-        item.classList.add('open');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-      }
-    });
-  });
 
   /* Sticky bar — hide while hero is visible */
   const stickyBar = document.getElementById('stickyBar');

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perguntas Frequentes — Colégio Criativo</title>
+  <meta name="description" content="Tire todas as suas dúvidas sobre o Colégio Criativo: educação infantil, ensino médio, horários, documentação e mais.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:       #0E2A6E;
+      --red:        #E2161B;
+      --red-hover:  #c41317;
+      --white:      #FFFFFF;
+      --gold:       #F4C430;
+      --gray-100:   #F4F5F7;
+      --gray-200:   #E8E9EC;
+      --gray-400:   #5B6470;
+      --gray-900:   #1A1A1A;
+      --font-display: 'Archivo', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --r-sm: 10px;
+      --r-lg: 18px;
+      --t: .22s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--gray-900); background: var(--gray-100); line-height: 1.6; }
+
+    /* ── Header ── */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 0 32px;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px;
+    }
+    .header__logo img { height: 40px; width: auto; display: block; }
+    .header__back {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-display); font-size: 13px; font-weight: 700;
+      color: var(--navy); text-decoration: none;
+      padding: 8px 16px; border-radius: 8px;
+      border: 1.5px solid rgba(14,42,110,.18);
+      transition: var(--t);
+    }
+    .header__back:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .header__cta {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-display); font-size: 13px; font-weight: 700;
+      color: var(--white); text-decoration: none;
+      padding: 9px 20px; border-radius: 8px;
+      background: var(--red);
+      transition: var(--t);
+    }
+    .header__cta:hover { background: var(--red-hover); }
+
+    /* ── Hero strip ── */
+    .faq-hero {
+      background: var(--navy);
+      padding: 56px 0 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .faq-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+    .faq-hero__inner { position: relative; z-index: 1; }
+    .faq-hero__label {
+      font-family: var(--font-display); font-size: 11px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .faq-hero__title {
+      font-family: var(--font-display); font-size: clamp(28px, 4vw, 48px);
+      font-weight: 900; color: var(--white); line-height: 1.1;
+      letter-spacing: -.02em; margin-bottom: 14px;
+    }
+    .faq-hero__sub { font-size: 15px; color: rgba(255,255,255,.6); max-width: 480px; margin: 0 auto; }
+
+    /* ── Layout ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 32px;
+      padding: 48px 0 80px;
+      align-items: start;
+    }
+
+    /* ── Sidebar ── */
+    .faq-sidebar {
+      position: sticky;
+      top: 88px;
+    }
+    .faq-sidebar__title {
+      font-family: var(--font-display); font-size: 11px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gray-400); margin-bottom: 10px; padding-left: 12px;
+    }
+    .faq-nav { display: flex; flex-direction: column; gap: 2px; }
+    .faq-nav__item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: none; background: none;
+      cursor: pointer;
+      text-align: left;
+      transition: var(--t);
+      text-decoration: none;
+    }
+    .faq-nav__item:hover { background: var(--white); }
+    .faq-nav__item.active { background: var(--navy); }
+    .faq-nav__label {
+      font-family: var(--font-display); font-size: 13px; font-weight: 700;
+      color: var(--navy);
+    }
+    .faq-nav__item.active .faq-nav__label { color: var(--white); }
+    .faq-nav__desc { font-size: 11px; color: var(--gray-400); line-height: 1.3; }
+    .faq-nav__item.active .faq-nav__desc { color: rgba(255,255,255,.6); }
+    .faq-nav__count {
+      margin-left: auto;
+      font-family: var(--font-display); font-size: 10px; font-weight: 700;
+      background: var(--gray-100); color: var(--gray-400);
+      padding: 2px 7px; border-radius: 20px;
+    }
+    .faq-nav__item.active .faq-nav__count { background: rgba(255,255,255,.15); color: rgba(255,255,255,.7); }
+
+    .sidebar__cta {
+      margin-top: 24px;
+      background: var(--red);
+      border-radius: var(--r-lg);
+      padding: 20px 18px;
+      text-align: center;
+    }
+    .sidebar__cta p { font-size: 13px; color: rgba(255,255,255,.8); margin-bottom: 12px; line-height: 1.5; }
+    .sidebar__cta a {
+      display: block; background: white; color: var(--red);
+      font-family: var(--font-display); font-size: 13px; font-weight: 800;
+      padding: 10px 16px; border-radius: 8px; text-decoration: none;
+      transition: var(--t);
+    }
+    .sidebar__cta a:hover { background: var(--navy); color: var(--white); }
+
+    /* ── Content ── */
+    .faq-section { display: none; }
+    .faq-section.active { display: block; }
+    .faq-section__header {
+      margin-bottom: 20px;
+    }
+    .faq-section__tag {
+      font-family: var(--font-display); font-size: 10px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 4px;
+    }
+    .faq-section__title {
+      font-family: var(--font-display); font-size: 26px; font-weight: 900;
+      color: var(--navy); line-height: 1.2;
+    }
+
+    .faq__item {
+      background: var(--white);
+      border-radius: var(--r-sm);
+      margin-bottom: 6px;
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+    }
+    .faq__q {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 18px 22px;
+      font-family: var(--font-display); font-size: 15px; font-weight: 700;
+      color: var(--navy); text-align: left; width: 100%;
+      cursor: pointer; background: none; border: none;
+    }
+    .faq__icon {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--gray-100);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: var(--t);
+    }
+    .faq__icon svg { width: 13px; height: 13px; stroke: var(--navy); transition: var(--t); }
+    .faq__item.open .faq__icon { background: var(--navy); }
+    .faq__item.open .faq__icon svg { stroke: var(--white); transform: rotate(45deg); }
+    .faq__a { max-height: 0; overflow: hidden; transition: max-height .4s cubic-bezier(.4,0,.2,1); }
+    .faq__a-inner { padding: 0 22px 20px; font-size: 14px; color: var(--gray-400); line-height: 1.85; }
+
+    .faq__info-block {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--r-sm);
+      padding: 24px 28px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--gray-400);
+      line-height: 1.85;
+    }
+    .faq__info-block + .faq__info-block { margin-top: 16px; }
+    .faq__info-block strong { color: var(--navy); display: block; margin-bottom: 10px; font-family: var(--font-display); font-size: 16px; }
+    .faq__info-block ul { padding-left: 20px; margin: 8px 0; }
+    .faq__info-block ul li { margin-bottom: 5px; }
+    .faq__info-sub-label {
+      font-family: var(--font-display); font-size: 12px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--red); margin: 20px 0 8px;
+    }
+
+    /* ── Mobile nav (horizontal pills) ── */
+    .faq-mobile-nav {
+      display: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 16px 0 8px;
+      gap: 8px;
+      scrollbar-width: none;
+    }
+    .faq-mobile-nav::-webkit-scrollbar { display: none; }
+    .faq-mobile-btn {
+      font-family: var(--font-display); font-size: 12px; font-weight: 700;
+      padding: 8px 16px; border-radius: 100px; white-space: nowrap;
+      border: 1.5px solid rgba(14,42,110,.2); background: none;
+      color: var(--navy); cursor: pointer; transition: var(--t);
+      flex-shrink: 0;
+    }
+    .faq-mobile-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+    @media (max-width: 900px) {
+      .faq-layout { grid-template-columns: 1fr; padding-top: 0; }
+      .faq-sidebar { display: none; }
+      .faq-mobile-nav { display: flex; }
+      .header { padding: 0 16px; }
+      .header__back span { display: none; }
+    }
+    @media (max-width: 480px) {
+      .faq-hero { padding: 40px 0 36px; }
+      .header__cta span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <a href="index.html" class="header__logo">
+    <img src="design/assets/logo_azul.png" alt="Colégio Criativo">
+  </a>
+  <div style="display:flex;align-items:center;gap:12px">
+    <a href="index.html" class="header__back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      <span>Voltar ao site</span>
+    </a>
+    <a href="#" class="header__cta" data-modal="visita">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span>Agendar visita</span>
+    </a>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="faq-hero">
+  <div class="container faq-hero__inner">
+    <div class="faq-hero__label">Central de ajuda</div>
+    <h1 class="faq-hero__title">Perguntas e respostas</h1>
+    <p class="faq-hero__sub">Tudo que você precisa saber sobre o Colégio Criativo, organizado por segmento.</p>
+  </div>
+</div>
+
+<!-- Mobile nav -->
+<div class="container">
+  <div class="faq-mobile-nav" id="faqMobileNav"></div>
+</div>
+
+<!-- Layout -->
+<div class="container">
+  <div class="faq-layout">
+
+    <!-- Sidebar -->
+    <aside class="faq-sidebar">
+      <div class="faq-sidebar__title">Categorias</div>
+      <nav class="faq-nav" id="faqNav"></nav>
+
+      <div class="sidebar__cta">
+        <p>Ainda tem dúvidas? Nossa equipe está pronta para te ajudar.</p>
+        <a href="#" data-modal="visita">Falar no WhatsApp</a>
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <main id="faqContent"></main>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal__close" id="modalClose" aria-label="Fechar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal__tag" id="modalTag">Família nova</div>
+    <div class="modal__title" id="modalTitle">Agende sua visita</div>
+    <p class="modal__sub" id="modalSub">Preencha seus dados e nossa equipe vai falar com você pelo WhatsApp.</p>
+    <form class="modal__form" id="modalForm" novalidate>
+      <div class="form-field">
+        <label for="f-nome">Nome<span>*</span></label>
+        <input type="text" id="f-nome" name="nome" placeholder="Seu nome completo" autocomplete="name">
+      </div>
+      <div class="form-field">
+        <label for="f-whatsapp">WhatsApp<span>*</span></label>
+        <input type="tel" id="f-whatsapp" name="whatsapp" placeholder="(14) 99999-9999" autocomplete="tel">
+      </div>
+      <div class="form-field">
+        <label for="f-email">E-mail<span>*</span></label>
+        <input type="email" id="f-email" name="email" placeholder="seu@email.com" autocomplete="email">
+      </div>
+      <div class="form-field">
+        <label for="f-mensagem">Mensagem</label>
+        <textarea id="f-mensagem" name="mensagem" placeholder="Alguma dúvida ou informação extra? (opcional)"></textarea>
+      </div>
+      <button type="submit" class="modal__submit" id="modalSubmit">
+        <span class="btn-label">Continuar no WhatsApp</span>
+        <span class="spinner"></span>
+      </button>
+      <div class="modal__error" id="modalError">Ocorreu um erro. Tente novamente.</div>
+    </form>
+  </div>
+</div>
+
+<style>
+  /* Modal styles (inline para página standalone) */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(9,20,50,.75);
+    backdrop-filter: blur(6px);
+    z-index: 9000; display: flex; align-items: center; justify-content: center; padding: 20px;
+    opacity: 0; visibility: hidden; transition: opacity .28s, visibility .28s;
+  }
+  .modal-overlay.open { opacity: 1; visibility: visible; }
+  .modal {
+    background: var(--navy); border: 1px solid rgba(255,255,255,.1); border-radius: 18px;
+    width: 100%; max-width: 480px; padding: 40px 36px 36px; position: relative;
+    transform: translateY(20px) scale(.97); transition: transform .28s;
+    background-image: linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+    background-size: 56px 56px;
+  }
+  .modal-overlay.open .modal { transform: translateY(0) scale(1); }
+  .modal__close {
+    position: absolute; top: 16px; right: 16px;
+    background: rgba(255,255,255,.08); border: none; border-radius: 50%;
+    width: 32px; height: 32px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.6); transition: background .2s, color .2s;
+  }
+  .modal__close:hover { background: rgba(255,255,255,.16); color: white; }
+  .modal__tag { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .modal__title { font-family: var(--font-display); font-size: 22px; font-weight: 900; color: white; line-height: 1.2; margin-bottom: 6px; }
+  .modal__sub { font-size: 13px; color: rgba(255,255,255,.5); margin-bottom: 28px; line-height: 1.55; }
+  .modal__form { display: flex; flex-direction: column; gap: 14px; }
+  .form-field { display: flex; flex-direction: column; gap: 5px; }
+  .form-field label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.55); letter-spacing: .04em; }
+  .form-field label span { color: var(--red); margin-left: 2px; }
+  .form-field input, .form-field textarea {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 8px;
+    padding: 11px 14px; font-size: 14px; color: white; font-family: var(--font-body);
+    outline: none; transition: border-color .2s, background .2s; width: 100%; box-sizing: border-box;
+  }
+  .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(255,255,255,.25); }
+  .form-field input:focus, .form-field textarea:focus { border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.09); }
+  .form-field input.error, .form-field textarea.error { border-color: var(--red); }
+  .form-field textarea { resize: vertical; min-height: 80px; }
+  .modal__submit {
+    margin-top: 6px; width: 100%;
+    background: var(--red); color: white;
+    font-family: var(--font-display); font-size: 15px; font-weight: 800;
+    padding: 14px; border: none; border-radius: 10px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: background .2s;
+  }
+  .modal__submit:hover { background: var(--red-hover); }
+  .modal__submit .spinner {
+    width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.3); border-top-color: white;
+    border-radius: 50%; animation: spin .7s linear infinite; display: none;
+  }
+  .modal__submit.loading .spinner { display: block; }
+  .modal__submit.loading .btn-label { display: none; }
+  .modal__error { font-size: 12px; color: #ff6b6b; text-align: center; display: none; margin-top: 4px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+<script>
+  const FAQ_CATS = [
+    {
+      id: 'infantil', label: 'Educação Infantil', desc: 'Berçário ao Pré II',
+      items: [
+        { q: 'Como funciona o período de adaptação?', a: 'Cada criança possui seu tempo. A adaptação é feita de forma gradual, respeitando as necessidades da família e do aluno.' },
+        { q: 'Como é a alimentação?', a: 'Oferecemos alimentação balanceada, preparada com cuidado e acompanhada pela equipe. Respeitamos restrições alimentares mediante orientação médica.' },
+        { q: 'Como é a rotina da criança?', a: 'A rotina é organizada com momentos de aprendizagem, brincadeiras, alimentação, higiene, descanso e atividades ao ar livre.' },
+        { q: 'Como acontece o desfralde?', a: 'Trabalhamos em parceria com a família, respeitando o desenvolvimento e o tempo de cada criança.' },
+        { q: 'Meu filho ainda usa chupeta ou mamadeira. Há problema?', a: 'A escola acompanha esse processo juntamente com a família, incentivando a retirada de forma gradual e respeitosa.' },
+        { q: 'Como a escola se comunica com os pais?', a: 'A comunicação acontece pelo aplicativo escolar e pela coordenação, garantindo informações rápidas e organizadas.' },
+        { q: 'Como vocês lidam quando a criança chora?', a: 'Nossa equipe acolhe a criança com carinho e segurança até que ela se sinta confortável no ambiente escolar.' },
+        { q: 'Como são os professores?', a: 'Contamos com professores qualificados, auxiliares em sala e acompanhamento constante da coordenação pedagógica.' },
+        { q: 'Como funciona a segurança?', a: 'Possuímos controle de entrada e saída, equipe treinada e protocolos específicos para garantir a segurança das crianças.' },
+        { q: 'Meu filho vai aprender brincando?', a: 'Sim. Na Educação Infantil, o brincar é uma ferramenta essencial para o desenvolvimento cognitivo, emocional, social e motor.' },
+        { q: 'Vocês trabalham valores?', a: 'Sim. Desenvolvemos diariamente valores cristãos, respeito, autonomia, responsabilidade e convivência.' },
+        { q: 'Como é o inglês?', a: 'O inglês faz parte da rotina da criança de maneira lúdica, favorecendo a aquisição natural do idioma.' },
+        { q: 'Meu filho dorme na escola?', a: 'As crianças que permanecem em período integral possuem momento de descanso em ambiente adequado.' },
+        { q: 'Como funciona o período integral?', a: 'O integral oferece atividades pedagógicas, recreativas, alimentação e acompanhamento durante todo o dia.' },
+        { q: 'Como vocês acompanham o desenvolvimento da criança?', a: 'O desenvolvimento é observado diariamente e compartilhado com a família por meio de reuniões e avaliações descritivas.' },
+      ]
+    },
+    {
+      id: 'fund2', label: 'Fundamental II', desc: '6º ao 9º ano',
+      items: [
+        { q: 'Como vocês ajudam na adaptação ao Fundamental II?', a: 'Acompanhamos o aluno de perto, auxiliando na organização da rotina e na adaptação aos diferentes professores.' },
+        { q: 'Como funciona o sistema de avaliações?', a: 'As avaliações são distribuídas ao longo do trimestre, valorizando o processo de aprendizagem.' },
+        { q: 'Como é o acompanhamento do aluno?', a: 'Professores e coordenação acompanham continuamente o desempenho acadêmico e comportamental.' },
+        { q: 'Como funciona o uso da tecnologia?', a: 'A tecnologia é utilizada como ferramenta pedagógica, sempre com intencionalidade educativa.' },
+        { q: 'Como vocês trabalham a disciplina?', a: 'A disciplina é construída com diálogo, responsabilidade, respeito e parceria com a família.' },
+        { q: 'Como funciona o inglês?', a: 'O aluno amplia a comunicação oral, leitura, escrita e compreensão da língua inglesa.' },
+        { q: 'Como vocês trabalham orientação profissional?', a: 'Desenvolvemos atividades que ajudam o estudante a conhecer suas habilidades e possibilidades futuras.' },
+        { q: 'Existe acompanhamento emocional?', a: 'Sim. A coordenação acompanha os alunos e realiza intervenções sempre que necessário.' },
+        { q: 'Como é preparada a transição para o Ensino Médio?', a: 'Trabalhamos autonomia, responsabilidade e aprofundamento dos conteúdos.' },
+        { q: 'Há projetos interdisciplinares?', a: 'Sim. Os alunos participam de projetos que integram diferentes áreas do conhecimento.' },
+        { q: 'Como funciona a comunicação com a família?', a: 'Mantemos contato constante pelo aplicativo escolar e coordenação.' },
+        { q: 'Como vocês lidam com bullying?', a: 'Atuamos preventivamente e intervimos imediatamente sempre que necessário.' },
+        { q: 'Como funciona o estudo para olimpíadas e concursos?', a: 'Incentivamos e preparamos os alunos para desafios acadêmicos, ampliando seu desenvolvimento.' },
+        { q: 'Como trabalham os valores?', a: 'Os princípios cristãos orientam nossas ações e convivência escolar.' },
+        { q: 'Qual o diferencial do Fundamental II?', a: 'Formação acadêmica consistente aliada ao desenvolvimento da autonomia, pensamento crítico e valores.' },
+      ]
+    },
+    {
+      id: 'medio', label: 'Ensino Médio', desc: '1ª à 3ª série',
+      items: [
+        { q: 'Como é a preparação para o ENEM e vestibulares?', a: 'O aluno possui preparação contínua, simulados, acompanhamento pedagógico e estratégias específicas para os principais exames.' },
+        { q: 'Como funciona o material didático?', a: 'Utilizamos um sistema atualizado, alinhado às competências exigidas pelos vestibulares e ENEM.' },
+        { q: 'Quantos simulados são realizados?', a: 'Durante o ano, os alunos participam de simulados que permitem acompanhar seu desempenho e evolução.' },
+        { q: 'Existe orientação profissional?', a: 'Sim. Desenvolvemos ações voltadas ao projeto de vida e escolha da carreira.' },
+        { q: 'Como funciona o acompanhamento pedagógico?', a: 'A coordenação acompanha individualmente o rendimento e orienta estratégias de estudo.' },
+        { q: 'Como vocês trabalham a saúde emocional?', a: 'Incentivamos o equilíbrio entre desempenho acadêmico, organização e bem-estar emocional.' },
+        { q: 'Como funciona o inglês?', a: 'O ensino busca desenvolver competências importantes para a vida acadêmica e profissional.' },
+        { q: 'Como é a rotina de estudos?', a: 'O aluno é incentivado a criar hábitos de estudo, planejamento e autonomia.' },
+        { q: 'Como vocês acompanham os resultados?', a: 'Monitoramos continuamente notas, simulados e evolução do estudante.' },
+        { q: 'Como funciona a comunicação com as famílias?', a: 'A família acompanha o desempenho por meio do aplicativo escolar, reuniões e contato com a coordenação.' },
+        { q: 'O colégio prepara apenas para vestibular?', a: 'Não. Também desenvolvemos competências, valores, liderança, pensamento crítico e formação humana.' },
+        { q: 'Como trabalham a formação cristã?', a: 'Os princípios bíblicos fazem parte da formação ética e das relações dentro da escola.' },
+        { q: 'Como são os professores?', a: 'Nossa equipe é formada por profissionais especializados, experientes e comprometidos com a excelência acadêmica.' },
+        { q: 'Como vocês auxiliam alunos com dificuldades?', a: 'Identificamos as necessidades e orientamos estratégias para potencializar o desempenho.' },
+        { q: 'Qual o diferencial do Ensino Médio?', a: 'Preparação acadêmica de excelência, formação integral, valores cristãos e acompanhamento próximo do aluno em uma das fases mais importantes de sua vida.' },
+      ]
+    },
+    {
+      id: 'secretaria', label: 'Secretaria', desc: 'Documentação',
+      info: [
+        { title: 'Documentos para Matrícula', body: `<p><strong style="color:#0E2A6E;font-size:14px;font-family:Archivo,sans-serif">Do aluno:</strong></p><ul><li>RG</li><li>CPF</li><li>Certidão de nascimento</li><li>Carteira de vacinação atualizada</li></ul><p style="margin-top:14px"><strong style="color:#0E2A6E;font-size:14px;font-family:Archivo,sans-serif">Dos responsáveis:</strong></p><ul><li>RG</li><li>CPF</li><li>Comprovante de residência atualizado</li></ul>` }
+      ]
+    },
+    {
+      id: 'financeiro', label: 'Financeiro', desc: 'Tesouraria',
+      info: [
+        { title: 'Tesouraria e Financeiro', body: `<p>Nossa tesouraria está disponível para atender as famílias tanto presencialmente quanto on-line, oferecendo praticidade e agilidade no atendimento.</p><p style="margin-top:12px">Durante a visita, os pais são convidados a conhecer toda a estrutura e a proposta pedagógica do colégio e, ao final, recebem todas as informações sobre valores e condições de matrícula.</p><p style="margin-top:12px">As mensalidades são realizadas por meio de boletos bancários, acessados pelo aplicativo da escola, onde a família também acompanha informações financeiras e outros serviços relacionados à vida escolar do aluno.</p>` }
+      ]
+    },
+    {
+      id: 'horarios', label: 'Horários', desc: 'Por segmento',
+      info: [
+        { title: 'Educação Infantil', body: `<ul><li><strong>Manhã:</strong> 7h30 às 11h30</li><li><strong>Tarde:</strong> 13h às 17h</li></ul><p style="margin-top:12px"><strong style="color:#0E2A6E">Período integral:</strong></p><ul><li>Integral I: até as 13h</li><li>Integral II: até as 15h</li><li>Integral III: até as 18h30</li></ul>` },
+        { title: 'Ensino Fundamental I (1º ao 5º ano)', body: `<ul><li><strong>Manhã:</strong> 7h10 às 11h40</li><li><strong>Tarde:</strong> 13h às 17h30</li></ul><p style="margin-top:12px"><strong style="color:#0E2A6E">Período integral:</strong></p><ul><li>Integral I: até as 13h</li><li>Integral II: até as 15h</li><li>Integral III: até as 18h30</li></ul>` },
+        { title: 'Ensino Fundamental II (6º ao 9º ano)', body: `<p><strong style="color:#0E2A6E">Manhã:</strong></p><ul><li>Segunda, terça e quarta-feira: 7h10 às 12h30</li><li>Quinta e sexta-feira: 7h10 às 11h40</li></ul><p style="margin-top:12px"><strong style="color:#0E2A6E">Tarde:</strong></p><ul><li>Segunda, terça e quarta-feira: 13h às 18h20</li><li>Quinta e sexta-feira: 13h às 17h30</li></ul>` },
+        { title: 'Ensino Médio', body: `<ul><li><strong>Aulas regulares:</strong> 7h10 às 12h30</li></ul><p style="margin-top:12px">Atividades complementares no período da tarde:</p><ul><li>Produção de redação</li><li>Educação Física</li><li>Aulas de aprofundamento</li><li>Projetos e atividades para ENEM e vestibulares</li></ul>` }
+      ]
+    },
+    {
+      id: 'cantina', label: 'Cantina', desc: 'Alimentação',
+      items: [
+        { q: 'Como funciona a cantina?', a: 'A cantina é terceirizada e oferece opções variadas, priorizando alimentos mais saudáveis. Os alunos do 1º ano podem realizar compras na cantina às sextas-feiras, sempre com acompanhamento da equipe escolar. Já os alunos do 2º ao 5º ano têm acesso diário à cantina durante o intervalo.' }
+      ]
+    },
+  ];
+
+  const PLUS = `<svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`;
+
+  function buildSection(cat) {
+    let html = `<div class="faq-section__header"><div class="faq-section__tag">${cat.desc}</div><div class="faq-section__title">${cat.label}</div></div>`;
+    if (cat.items) cat.items.forEach(({q,a}) => {
+      html += `<div class="faq__item"><button class="faq__q">${q}<span class="faq__icon">${PLUS}</span></button><div class="faq__a"><div class="faq__a-inner">${a}</div></div></div>`;
+    });
+    if (cat.info) cat.info.forEach(({title,body}) => {
+      html += `<div class="faq__info-block"><strong>${title}</strong>${body}</div>`;
+    });
+    return html;
+  }
+
+  const nav     = document.getElementById('faqNav');
+  const content = document.getElementById('faqContent');
+  const mobileNav = document.getElementById('faqMobileNav');
+
+  FAQ_CATS.forEach((cat, i) => {
+    const count = cat.items ? cat.items.length : (cat.info ? cat.info.length : 0);
+
+    // Sidebar nav
+    const btn = document.createElement('button');
+    btn.className = 'faq-nav__item' + (i===0?' active':'');
+    btn.dataset.cat = cat.id;
+    btn.innerHTML = `<div><div class="faq-nav__label">${cat.label}</div><div class="faq-nav__desc">${cat.desc}</div></div><span class="faq-nav__count">${count}</span>`;
+    nav.appendChild(btn);
+
+    // Mobile pill
+    const pill = document.createElement('button');
+    pill.className = 'faq-mobile-btn' + (i===0?' active':'');
+    pill.dataset.cat = cat.id;
+    pill.textContent = cat.label;
+    mobileNav.appendChild(pill);
+
+    // Section
+    const sec = document.createElement('section');
+    sec.className = 'faq-section' + (i===0?' active':'');
+    sec.id = 'sec-' + cat.id;
+    sec.innerHTML = buildSection(cat);
+    content.appendChild(sec);
+  });
+
+  function activate(id) {
+    document.querySelectorAll('.faq-nav__item, .faq-mobile-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === id));
+    document.querySelectorAll('.faq-section').forEach(s => s.classList.toggle('active', s.id === 'sec-' + id));
+  }
+
+  nav.addEventListener('click', e => { const b = e.target.closest('.faq-nav__item'); if (b) activate(b.dataset.cat); });
+  mobileNav.addEventListener('click', e => { const b = e.target.closest('.faq-mobile-btn'); if (b) activate(b.dataset.cat); });
+
+  content.addEventListener('click', e => {
+    const q = e.target.closest('.faq__q');
+    if (!q) return;
+    const item = q.closest('.faq__item');
+    const ans  = item.querySelector('.faq__a');
+    const open = item.classList.contains('open');
+    item.closest('.faq-section').querySelectorAll('.faq__item.open').forEach(i => {
+      i.classList.remove('open'); i.querySelector('.faq__a').style.maxHeight = '0';
+    });
+    if (!open) { item.classList.add('open'); ans.style.maxHeight = ans.scrollHeight + 'px'; }
+  });
+
+  /* Modal */
+  const WA_VISITA      = 'https://wa.me/551432396060?text=Olá!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Colégio%20Criativo.';
+  const WA_REMATRICULA = 'https://wa.me/551432396060?text=Olá!%20Gostaria%20de%20renovar%20a%20matrícula%20do%20meu%20filho.';
+  const MODAL_COPY = {
+    visita:      { tag:'Família nova',           title:'Agende sua visita',       sub:'Preencha seus dados e nossa equipe vai falar com você pelo WhatsApp.', wa: WA_VISITA },
+    rematricula: { tag:'Já sou família Criativo', title:'Renovar minha matrícula', sub:'Preencha seus dados e finalize a renovação direto pelo WhatsApp.',     wa: WA_REMATRICULA }
+  };
+  let currentType = 'visita';
+  const overlay     = document.getElementById('modalOverlay');
+  const modalClose  = document.getElementById('modalClose');
+  const modalForm   = document.getElementById('modalForm');
+  const modalSubmit = document.getElementById('modalSubmit');
+  const modalError  = document.getElementById('modalError');
+
+  function openModal(type) {
+    currentType = type;
+    const c = MODAL_COPY[type];
+    document.getElementById('modalTag').textContent   = c.tag;
+    document.getElementById('modalTitle').textContent = c.title;
+    document.getElementById('modalSub').textContent   = c.sub;
+    modalForm.reset();
+    modalForm.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+    modalError.style.display = 'none';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('f-nome').focus();
+  }
+  function closeModal() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+  modalForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    modalForm.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+    let ok = true;
+    ['f-nome','f-whatsapp','f-email'].forEach(id => { const el = document.getElementById(id); if (!el.value.trim()) { el.classList.add('error'); ok = false; } });
+    const email = document.getElementById('f-email');
+    if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.classList.add('error'); ok = false; }
+    if (!ok) return;
+    modalSubmit.classList.add('loading'); modalSubmit.disabled = true; modalError.style.display = 'none';
+    try {
+      await fetch('https://n8nwebhook.mercattatech.com.br/webhook/mercatta-growth-web', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ tipo: currentType, nome: document.getElementById('f-nome').value.trim(), whatsapp: document.getElementById('f-whatsapp').value.trim(), email: document.getElementById('f-email').value.trim(), mensagem: document.getElementById('f-mensagem').value.trim(), origem: window.location.href })
+      });
+    } catch(_) {}
+    finally { modalSubmit.classList.remove('loading'); modalSubmit.disabled = false; }
+    closeModal();
+    window.open(MODAL_COPY[currentType].wa, '_blank', 'noopener');
+  });
+
+  document.addEventListener('click', e => { const t = e.target.closest('[data-modal]'); if (t) { e.preventDefault(); openModal(t.dataset.modal); } });
+  modalClose.addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
