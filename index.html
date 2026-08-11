@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matrículas 2025 — Colégio Criativo · Bauru</title>
-  <meta name="description" content="Matrículas e rematrículas abertas no Colégio Criativo de Bauru. 30 anos de tradição, do Berçário ao Ensino Médio, Sistema Mackenzie.">
+  <title>Matrículas Abertas 2027 — Colégio Criativo · Bauru</title>
+  <meta name="description" content="Matrículas Abertas 2027 — Colégio Criativo de Bauru. Do Berçário ao Ensino Médio, Sistema Mackenzie. Agende sua visita ou renove sua matrícula!">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1407,12 +1407,169 @@
         grid-template-columns: 1fr;
         grid-template-rows: auto;
       }
-      .infra__b1,.infra__b2,.infra__b3,
-      .infra__b4,.infra__b5,.infra__b6 {
-        grid-column: 1; grid-row: auto;
-        height: 220px;
-      }
     }
+    /* ============================================================
+       WIDGET FLUTUANTE WHATSAPP FLOW
+    ============================================================ */
+    .wa-flow-widget {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      font-family: var(--font-body);
+    }
+    .wa-flow-btn {
+      background: #25D366;
+      color: #ffffff;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    .wa-flow-btn:hover {
+      background: #1eb956;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.55);
+    }
+    .wa-flow-btn__badge {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+    .wa-flow-card {
+      position: absolute;
+      bottom: 68px;
+      right: 0;
+      width: min(360px, calc(100vw - 32px));
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 16px 48px rgba(9, 29, 79, 0.25);
+      border: 1px solid rgba(14, 42, 110, 0.12);
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(16px) scale(0.95);
+      transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    .wa-flow-card.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+    .wa-flow-header {
+      background: var(--navy);
+      color: #ffffff;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .wa-flow-header__info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .wa-flow-avatar {
+      width: 38px;
+      height: 38px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+    .wa-flow-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+    .wa-flow-subtitle {
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+    .wa-flow-close {
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+    }
+    .wa-flow-close:hover { color: #ffffff; }
+    .wa-flow-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .wa-flow-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .wa-flow-field label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .wa-flow-field label span { color: var(--red); }
+    .wa-flow-field input, .wa-flow-field select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      transition: border-color 0.2s ease;
+      background: #ffffff;
+      color: var(--gray-900);
+    }
+    .wa-flow-field input:focus, .wa-flow-field select:focus {
+      outline: none;
+      border-color: var(--navy);
+    }
+    .wa-flow-field input.error, .wa-flow-field select.error {
+      border-color: var(--red);
+      background: #FFF5F5;
+    }
+    .wa-flow-submit {
+      background: #25D366;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      padding: 12px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .wa-flow-submit:hover { background: #1eb956; }
+    .wa-flow-submit .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: none;
+    }
+    .wa-flow-submit.loading .spinner { display: block; }
+    .wa-flow-submit.loading .btn-label { display: none; }
   </style>
 </head>
 <body>
@@ -1473,7 +1630,7 @@
       <div class="hero__content">
         <div class="hero__pill">
           <span class="hero__pill-dot"></span>
-          Matrículas e Rematrículas 2025
+          Matrículas e Rematrículas 2027
         </div>
 
         <h1 class="hero__title">
@@ -1987,7 +2144,7 @@
         <img src="design/assets/logo_mackenzie.png" alt="Sistema Mackenzie de Ensino" style="height:30px;width:auto;opacity:.7;">
       </div>
 
-      <div class="cta-final__label reveal">Matrículas e Rematrículas 2025</div>
+      <div class="cta-final__label reveal">Matrículas e Rematrículas 2027</div>
 
       <h2 class="cta-final__title reveal delay-1">
         Continue essa jornada.<br><em>De mãos dadas.</em>
@@ -2038,7 +2195,7 @@
           <a href="mailto:contato@colegiocriativo.com.br">contato@colegiocriativo.com.br</a>
         </div>
       </div>
-      <div class="cta-final__copy">© 2025 Colégio Criativo · Bauru/SP</div>
+      <div class="cta-final__copy">© 2027 Colégio Criativo · Bauru/SP</div>
       <div class="cta-final__mack">
         <img src="design/assets/logo_mackenzie.png" alt="Sistema Mackenzie de Ensino" style="height:26px;width:auto;opacity:.4;">
       </div>
@@ -2101,8 +2258,133 @@
 
 
 <!-- ================================================================
+     WIDGET FLUTUANTE WHATSAPP FLOW (CANTO INFERIOR DIREITO)
+================================================================ -->
+<div class="wa-flow-widget" id="waFlowWidget">
+  <div class="wa-flow-card" id="waFlowCard" aria-hidden="true">
+    <div class="wa-flow-header">
+      <div class="wa-flow-header__info">
+        <div class="wa-flow-avatar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="wa-flow-title">Atendimento Colégio Criativo</div>
+          <div class="wa-flow-subtitle">Online • Resposta rápida no WhatsApp</div>
+        </div>
+      </div>
+      <button type="button" class="wa-flow-close" id="waFlowClose" aria-label="Fechar formulário">✕</button>
+    </div>
+
+    <form class="wa-flow-body" id="waFlowForm" novalidate>
+      <div class="wa-flow-field">
+        <label for="wf-nome">Nome <span>*</span></label>
+        <input type="text" id="wf-nome" name="nome" placeholder="Seu nome completo" required>
+      </div>
+
+      <div class="wa-flow-field">
+        <label for="wf-email">E-mail <span>*</span></label>
+        <input type="email" id="wf-email" name="email" placeholder="seu@email.com" required>
+      </div>
+
+      <div class="wa-flow-field">
+        <label for="wf-deseja">Deseja <span>*</span></label>
+        <select id="wf-deseja" name="deseja" required>
+          <option value="" disabled selected>Selecione uma opção...</option>
+          <option value="Matrícula">Matrícula</option>
+          <option value="Rematrícula">Rematrícula</option>
+          <option value="Agendamento de Visita">Agendamento de Visita</option>
+        </select>
+      </div>
+
+      <div class="wa-flow-field">
+        <label for="wf-whatsapp">WhatsApp <span>*</span></label>
+        <input type="tel" id="wf-whatsapp" name="whatsapp" placeholder="(14) 99999-9999" required>
+      </div>
+
+      <button type="submit" class="wa-flow-submit" id="waFlowSubmit">
+        <span class="btn-label">Falar no WhatsApp →</span>
+        <span class="spinner"></span>
+      </button>
+    </form>
+  </div>
+
+  <button type="button" class="wa-flow-btn" id="waFlowBtn" aria-label="Abrir atendimento no WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+    <span class="wa-flow-btn__badge">Fale Conosco</span>
+  </button>
+</div>
+
+
+<!-- ================================================================
      SCRIPTS
 ================================================================ -->
+<script>
+  /* ── WhatsApp Flow Widget Logic ────────────────────────────── */
+  const waFlowBtn = document.getElementById('waFlowBtn');
+  const waFlowCard = document.getElementById('waFlowCard');
+  const waFlowClose = document.getElementById('waFlowClose');
+  const waFlowForm = document.getElementById('waFlowForm');
+  const waFlowSubmit = document.getElementById('waFlowSubmit');
+
+  if (waFlowBtn && waFlowCard && waFlowClose) {
+    waFlowBtn.addEventListener('click', () => {
+      waFlowCard.classList.toggle('active');
+    });
+    waFlowClose.addEventListener('click', () => {
+      waFlowCard.classList.remove('active');
+    });
+  }
+
+  if (waFlowForm) {
+    waFlowForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const nome = document.getElementById('wf-nome');
+      const email = document.getElementById('wf-email');
+      const deseja = document.getElementById('wf-deseja');
+      const whatsapp = document.getElementById('wf-whatsapp');
+
+      let ok = true;
+      [nome, email, deseja, whatsapp].forEach(el => {
+        if (!el.value || !el.value.trim()) { el.classList.add('error'); ok = false; }
+        else { el.classList.remove('error'); }
+      });
+      if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.classList.add('error'); ok = false;
+      }
+      if (!ok) return;
+
+      waFlowSubmit.classList.add('loading');
+      waFlowSubmit.disabled = true;
+
+      const payload = {
+        nome: nome.value.trim(),
+        email: email.value.trim(),
+        deseja: deseja.value,
+        whatsapp: whatsapp.value.trim(),
+        tipo: 'whatsapp_flow',
+        origem: window.location.href
+      };
+
+      try {
+        await fetch('https://n8nwebhook.mercattatech.com.br/webhook/mercatta-growth-web', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (_) {
+      } finally {
+        waFlowSubmit.classList.remove('loading');
+        waFlowSubmit.disabled = false;
+      }
+
+      window.location.href = 'obrigado.html';
+    });
+  }
+</script>
 <script>
   /* ── FAQ Data ─────────────────────────────────────────────── */
   const FAQ_CATS = [
@@ -2418,7 +2700,7 @@
     }
 
     closeModal();
-    window.open(MODAL_COPY[currentType].wa, '_blank', 'noopener');
+    window.location.href = 'obrigado.html';
   });
 
   /* Abre modal ao clicar em qualquer [data-modal] */
