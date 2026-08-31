@@ -688,6 +688,141 @@
       font-style: italic;
     }
 
+    /* CEPEC — galeria de fotos */
+    .cepec-gallery { margin-top: 56px; }
+    .cepec-gallery__label {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .cepec-gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .cepec-gallery__item {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--r-md);
+      overflow: hidden;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      display: block;
+      width: 100%;
+    }
+    .cepec-gallery__item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .6s var(--ease);
+    }
+    .cepec-gallery__item:hover img { transform: scale(1.08); }
+    .cepec-gallery__item::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(9,29,79,0);
+      transition: background var(--t);
+    }
+    .cepec-gallery__item:hover::after { background: rgba(9,29,79,.28); }
+    .cepec-gallery__zoom {
+      position: absolute;
+      top: 10px; right: 10px;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.9);
+      color: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transform: scale(.8);
+      transition: opacity var(--t), transform var(--t);
+    }
+    .cepec-gallery__item:hover .cepec-gallery__zoom { opacity: 1; transform: scale(1); }
+    .cepec-gallery__zoom svg { width: 14px; height: 14px; }
+
+    @media (max-width: 768px) {
+      .cepec-gallery__grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .cepec-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ============================================================
+       LIGHTBOX
+    ============================================================ */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 20, 50, 0.92);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .28s ease, visibility .28s ease;
+    }
+    .lightbox-overlay.open { opacity: 1; visibility: visible; }
+    .lightbox {
+      position: relative;
+      max-width: min(900px, 92vw);
+      max-height: 86vh;
+      transform: scale(.97);
+      transition: transform .28s ease;
+    }
+    .lightbox-overlay.open .lightbox { transform: scale(1); }
+    .lightbox img {
+      max-width: 100%;
+      max-height: 86vh;
+      width: auto; height: auto;
+      border-radius: var(--r-md);
+      display: block;
+      box-shadow: var(--shadow-lg);
+    }
+    .lightbox__close {
+      position: absolute;
+      top: -44px; right: 0;
+      background: rgba(255,255,255,.1);
+      border: none;
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      transition: background var(--t);
+    }
+    .lightbox__close:hover { background: rgba(255,255,255,.2); }
+    .lightbox__nav {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.1);
+      border: none;
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      transition: background var(--t);
+    }
+    .lightbox__nav:hover { background: rgba(255,255,255,.22); }
+    .lightbox__prev { left: -56px; }
+    .lightbox__next { right: -56px; }
+    .lightbox__counter {
+      position: absolute;
+      bottom: -34px; left: 0; right: 0;
+      text-align: center;
+      color: rgba(255,255,255,.6);
+      font-size: 12px;
+      font-family: var(--font-display);
+      letter-spacing: .06em;
+    }
+    @media (max-width: 640px) {
+      .lightbox__prev { left: 4px; }
+      .lightbox__next { right: 4px; }
+      .lightbox__close { top: -40px; right: 0; }
+    }
+
     /* ============================================================
        EXTRACURRICULARES
     ============================================================ */
@@ -891,6 +1026,14 @@
       flex-shrink:0;
     }
     .dep__avatar img { width:100%; height:100%; object-fit:cover; }
+    .dep__avatar--initials {
+      display:flex; align-items:center; justify-content:center;
+      font-family: var(--font-display);
+      font-weight:800; font-size:14px;
+      color: var(--white);
+      background: var(--navy);
+    }
+    .dep--navy .dep__avatar--initials { background: rgba(255,255,255,.16); }
     .dep__name {
       font-family: var(--font-display);
       font-size:13px;
@@ -1992,6 +2135,12 @@
       </div>
 
     </div>
+
+    <div class="cepec-gallery">
+      <div class="cepec-gallery__label label reveal" style="color:var(--navy)">O espaço na prática</div>
+      <div class="cepec-gallery__grid" id="cepecGalleryGrid"></div>
+    </div>
+
   </div>
 </section>
 
@@ -2124,12 +2273,12 @@
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
         <span class="dep__quote">"</span>
-        <p class="dep__text">Minha filha entrou no Balão Encantado com 2 anos e hoje está no 5º ano. Ver o cuidado da escola com ela em cada fase me dá uma segurança que não tem preço. O Criativo realmente caminha junto com a gente.</p>
+        <p class="dep__text">Para nós, pais que precisam do apoio da escola em período integral, não há nada melhor do que saber que nossos filhos estão em boas mãos. E o Colégio Criativo foi resposta de oração e trouxe isso pra nossa família: confiança e tranquilidade.</p>
         <div class="dep__author">
-          <div class="dep__avatar"><img src="https://i.pravatar.cc/88?img=47" alt="Ana Paula M."></div>
+          <div class="dep__avatar dep__avatar--initials">J</div>
           <div>
-            <div class="dep__name">Ana Paula M.</div>
-            <div class="dep__role">Mãe · família Criativo há 7 anos</div>
+            <div class="dep__name">Juliana</div>
+            <div class="dep__role">Mãe da Bella Sanches</div>
           </div>
         </div>
       </div>
@@ -2143,12 +2292,12 @@
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
         <span class="dep__quote">"</span>
-        <p class="dep__text">O diferencial do Criativo é que eles formam caráter, não só nota. Meu filho aprendeu sobre responsabilidade, ética e fé de uma forma natural, que faz sentido na vida dele. Isso não tem no currículo — está na cultura da escola.</p>
+        <p class="dep__text">Há 5 anos, minha filha, Letícia Nogueira, faz parte deste colégio, e minha experiência sempre foi excelente. É uma escola acolhedora, organizada, com princípios e valores de Deus, além de manter um ótimo relacionamento com as famílias. O ensino é de qualidade e prepara os alunos para o futuro. Também valorizo muito o ambiente saudável e seguro que a escola proporciona, onde as crianças são incentivadas a aprender, respeitar, conviver e desenvolver seus talentos.</p>
         <div class="dep__author">
-          <div class="dep__avatar"><img src="https://i.pravatar.cc/88?img=12" alt="Roberto F."></div>
+          <div class="dep__avatar dep__avatar--initials">K</div>
           <div>
-            <div class="dep__name">Roberto F.</div>
-            <div class="dep__role">Pai · família Criativo há 10 anos</div>
+            <div class="dep__name">Katiana Reihner</div>
+            <div class="dep__role">Mãe da Letícia Nogueira</div>
           </div>
         </div>
       </div>
@@ -2162,12 +2311,69 @@
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
         <span class="dep__quote">"</span>
-        <p class="dep__text">Visitamos três escolas antes de decidir. O Criativo foi o único onde a gente sentiu acolhimento real — fomos recebidos como família, não como clientes. No primeiro dia do meu filho, a diretora sabia o nome dele.</p>
+        <p class="dep__text">Toda a equipe do Colégio Criativo foi completamente acolhedora conosco. A evolução na aprendizagem foi incrível, principalmente para ele, que veio de escola pública. O respeito e a paciência com meu filho, que tem diagnóstico de TDAH e Altas Habilidades, a organização e a solidariedade — só tenho gratidão a toda a equipe. Foi a melhor decisão que tomamos em relação ao futuro do nosso filho.</p>
         <div class="dep__author">
-          <div class="dep__avatar"><img src="https://i.pravatar.cc/88?img=32" alt="Carla e João S."></div>
+          <div class="dep__avatar dep__avatar--initials">N</div>
           <div>
-            <div class="dep__name">Carla e João S.</div>
-            <div class="dep__role">Pais · novos na família Criativo</div>
+            <div class="dep__name">Naiara</div>
+            <div class="dep__role">Mãe do Leonardo Costa</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dep dep--navy reveal delay-2">
+        <div class="dep__stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <span class="dep__quote">"</span>
+        <p class="dep__text">Há 9 anos confiamos a educação do nosso filho ao Colégio Criativo. Do 1° ao 9° ano, acompanhamos de perto a qualidade do ensino, a criatividade nas aulas e o cuidado individual com cada aluno, sempre alinhado aos valores cristãos. A equipe gestora e pedagógica sempre nos acolheu e deu todo o suporte quando precisamos. É uma escola que educa para a vida e para um coração temente a Deus.</p>
+        <div class="dep__author">
+          <div class="dep__avatar dep__avatar--initials">C</div>
+          <div>
+            <div class="dep__name">Camila</div>
+            <div class="dep__role">Mãe do Enzo Paulo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dep reveal">
+        <div class="dep__stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <span class="dep__quote">"</span>
+        <p class="dep__text">Escolhi o Colégio Criativo porque encontrei a união que considero essencial: princípios cristãos e ensino de qualidade. Admiro a forma como a escola estimula a criatividade, a autonomia e o desenvolvimento integral dos meus filhos. Para nossa família, é muito especial saber que eles estão sendo preparados para o futuro sem abrir mão dos valores que acreditamos.</p>
+        <div class="dep__author">
+          <div class="dep__avatar dep__avatar--initials">A</div>
+          <div>
+            <div class="dep__name">Amanda</div>
+            <div class="dep__role">Mãe do Gustavo e da Manuela</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dep dep--navy reveal delay-1">
+        <div class="dep__stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <span class="dep__quote">"</span>
+        <p class="dep__text">Meu nome é Flávia e sou mãe do Henrique. Hoje ele está no 4° ano, mas faz parte do Colégio Criativo desde os 5 meses de vida. Sempre gostei muito do carinho e da dedicação que os professores e profissionais têm — e sempre tiveram — com ele.</p>
+        <div class="dep__author">
+          <div class="dep__avatar"><img src="design/assets/dep_flavia.jpg" alt="Flávia"></div>
+          <div>
+            <div class="dep__name">Flávia</div>
+            <div class="dep__role">Mãe do Henrique · 4° ano</div>
           </div>
         </div>
       </div>
@@ -2272,6 +2478,26 @@
 </section>
 
 
+
+
+<!-- ================================================================
+     LIGHTBOX — GALERIA CEPEC
+================================================================ -->
+<div class="lightbox-overlay" id="lightboxOverlay" role="dialog" aria-modal="true" aria-label="Foto ampliada do CEPEC">
+  <div class="lightbox">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <button class="lightbox__nav lightbox__prev" id="lightboxPrev" aria-label="Foto anterior">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox__nav lightbox__next" id="lightboxNext" aria-label="Próxima foto">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="lightbox__counter" id="lightboxCounter"></div>
+  </div>
+</div>
 
 
 <!-- ================================================================
@@ -2783,6 +3009,80 @@
   modalClose.addEventListener('click', closeModal);
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  /* ── Galeria CEPEC + Lightbox ────────────────────────────────── */
+  const CEPEC_PHOTOS = [
+    { thumb: 'design/fotos/cepec/cepec-01-thumb.jpg', full: 'design/fotos/cepec/cepec-01-full.jpg', alt: 'Área verde do CEPEC com árvore de grande porte, parquinho e o galinheiro ao fundo' },
+    { thumb: 'design/fotos/cepec/cepec-02-thumb.jpg', full: 'design/fotos/cepec/cepec-02-full.jpg', alt: 'Pátio arborizado do CEPEC com brinquedo em formato de castelo na areia' },
+    { thumb: 'design/fotos/cepec/cepec-03-thumb.jpg', full: 'design/fotos/cepec/cepec-03-full.jpg', alt: 'Vista do CEPEC com a árvore central e o parque de areia dos alunos' },
+    { thumb: 'design/fotos/cepec/cepec-04-thumb.jpg', full: 'design/fotos/cepec/cepec-04-full.jpg', alt: 'Outro ângulo do parque do CEPEC, com árvore, castelo de brinquedo e o galinheiro ao fundo' },
+    { thumb: 'design/fotos/cepec/cepec-05-thumb.jpg', full: 'design/fotos/cepec/cepec-05-full.jpg', alt: 'Área externa do CEPEC reunindo árvore, parquinho e galinheiro' },
+    { thumb: 'design/fotos/cepec/cepec-06-thumb.jpg', full: 'design/fotos/cepec/cepec-06-full.jpg', alt: 'Galinheiro de madeira do CEPEC à sombra da árvore' },
+    { thumb: 'design/fotos/cepec/cepec-07-thumb.jpg', full: 'design/fotos/cepec/cepec-07-full.jpg', alt: 'Galinheiro do CEPEC com as galinhas visíveis entre as telas' },
+    { thumb: 'design/fotos/cepec/cepec-08-thumb.jpg', full: 'design/fotos/cepec/cepec-08-full.jpg', alt: 'Detalhe do galinheiro do CEPEC ao lado do mural pintado na parede' },
+    { thumb: 'design/fotos/cepec/cepec-09-thumb.jpg', full: 'design/fotos/cepec/cepec-09-full.jpg', alt: 'Galinheiro do CEPEC com muro ilustrado ao fundo' },
+    { thumb: 'design/fotos/cepec/cepec-10-thumb.jpg', full: 'design/fotos/cepec/cepec-10-full.jpg', alt: 'Vista aproximada do galinheiro e do espaço de convivência do CEPEC' },
+  ];
+
+  const ZOOM_ICON = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>`;
+
+  const cepecGrid = document.getElementById('cepecGalleryGrid');
+  if (cepecGrid) {
+    CEPEC_PHOTOS.forEach((photo, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'cepec-gallery__item';
+      btn.type = 'button';
+      btn.dataset.index = i;
+      btn.setAttribute('aria-label', `Ampliar foto: ${photo.alt}`);
+      btn.innerHTML = `<img src="${photo.thumb}" alt="${photo.alt}" loading="lazy">
+        <span class="cepec-gallery__zoom">${ZOOM_ICON}</span>`;
+      cepecGrid.appendChild(btn);
+    });
+  }
+
+  const lightboxOverlay = document.getElementById('lightboxOverlay');
+  const lightboxImg     = document.getElementById('lightboxImg');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  const lightboxClose   = document.getElementById('lightboxClose');
+  const lightboxPrev    = document.getElementById('lightboxPrev');
+  const lightboxNext    = document.getElementById('lightboxNext');
+  let lightboxIndex = 0;
+
+  function showLightboxPhoto(i) {
+    lightboxIndex = (i + CEPEC_PHOTOS.length) % CEPEC_PHOTOS.length;
+    const photo = CEPEC_PHOTOS[lightboxIndex];
+    lightboxImg.src = photo.full;
+    lightboxImg.alt = photo.alt;
+    lightboxCounter.textContent = `${lightboxIndex + 1} / ${CEPEC_PHOTOS.length}`;
+  }
+
+  function openLightbox(i) {
+    showLightboxPhoto(i);
+    lightboxOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightboxOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (cepecGrid) {
+    cepecGrid.addEventListener('click', e => {
+      const item = e.target.closest('.cepec-gallery__item');
+      if (item) openLightbox(Number(item.dataset.index));
+    });
+  }
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', () => showLightboxPhoto(lightboxIndex - 1));
+  lightboxNext.addEventListener('click', () => showLightboxPhoto(lightboxIndex + 1));
+  lightboxOverlay.addEventListener('click', e => { if (e.target === lightboxOverlay) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lightboxOverlay.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showLightboxPhoto(lightboxIndex - 1);
+    if (e.key === 'ArrowRight') showLightboxPhoto(lightboxIndex + 1);
+  });
 
   /* Header scroll */
   const header = document.getElementById('header');
