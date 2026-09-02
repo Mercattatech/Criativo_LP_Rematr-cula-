@@ -416,7 +416,7 @@
     </a>
     <a href="#" class="header__cta" data-modal="visita">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      <span>Agendar visita</span>
+      <span>Visitas e Matrículas</span>
     </a>
   </div>
 </header>
@@ -463,30 +463,127 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
     <div class="modal__tag" id="modalTag">Família nova</div>
-    <div class="modal__title" id="modalTitle">Agende sua visita</div>
-    <p class="modal__sub" id="modalSub">Preencha seus dados e nossa equipe vai falar com você pelo WhatsApp.</p>
+    <div class="modal__title" id="modalTitle">Visitas e Matrículas</div>
+    <p class="modal__sub" id="modalSub">Preencha a ficha abaixo para nossa equipe dar início ao atendimento pelo WhatsApp.</p>
     <form class="modal__form" id="modalForm" novalidate>
-      <div class="form-field">
-        <label for="f-nome">Nome<span>*</span></label>
-        <input type="text" id="f-nome" name="nome" placeholder="Seu nome completo" autocomplete="name">
+      <div class="form-section-title">📋 FICHA DE ATENDIMENTO – 2026</div>
+
+      <!-- 1. Modalidade de Ensino -->
+      <div class="form-block">
+        <label class="form-block__label">1. Modalidade de Ensino <span>*</span></label>
+        <div class="form-pills">
+          <label class="pill-option"><input type="radio" name="modalidade" value="Educação Infantil" required> <span>Educação Infantil</span></label>
+          <label class="pill-option"><input type="radio" name="modalidade" value="Fundamental I"> <span>Fundamental I</span></label>
+          <label class="pill-option"><input type="radio" name="modalidade" value="Fundamental II"> <span>Fundamental II</span></label>
+          <label class="pill-option"><input type="radio" name="modalidade" value="Ensino Médio"> <span>Ensino Médio</span></label>
+        </div>
+        <div class="form-field">
+          <label for="f-serie">Série / Ano <span>*</span></label>
+          <input type="text" id="f-serie" name="serie" placeholder="Ex: Berçário, 1º ano, 6º ano, 1ª série..." required>
+        </div>
       </div>
-      <div class="form-field">
-        <label for="f-whatsapp">WhatsApp<span>*</span></label>
-        <input type="tel" id="f-whatsapp" name="whatsapp" placeholder="(14) 99999-9999" autocomplete="tel">
+
+      <!-- 2. Período -->
+      <div class="form-block">
+        <label class="form-block__label">2. Período <span>*</span></label>
+        <div class="form-pills">
+          <label class="pill-option"><input type="radio" name="periodo" value="Manhã" required> <span>Manhã</span></label>
+          <label class="pill-option"><input type="radio" name="periodo" value="Tarde"> <span>Tarde</span></label>
+          <label class="pill-option"><input type="radio" name="periodo" value="Integral"> <span>Integral</span></label>
+        </div>
       </div>
-      <div class="form-field">
-        <label for="f-email">E-mail<span>*</span></label>
-        <input type="email" id="f-email" name="email" placeholder="seu@email.com" autocomplete="email">
+
+      <!-- 3. Dados do Responsável -->
+      <div class="form-block">
+        <label class="form-block__label">3. Dados do Responsável</label>
+        <div class="form-field">
+          <label for="f-nome-resp">Nome do responsável <span>*</span></label>
+          <input type="text" id="f-nome-resp" name="nome_responsavel" placeholder="Seu nome completo" autocomplete="name" required>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-field">
+            <label for="f-whatsapp">WhatsApp <span>*</span></label>
+            <input type="tel" id="f-whatsapp" name="whatsapp" placeholder="(14) 99999-9999" autocomplete="tel" required>
+          </div>
+          <div class="form-field">
+            <label for="f-email">E-mail <span>*</span></label>
+            <input type="email" id="f-email" name="email" placeholder="seu@email.com" autocomplete="email" required>
+          </div>
+        </div>
       </div>
-      <div class="form-field">
-        <label for="f-mensagem">Mensagem</label>
-        <textarea id="f-mensagem" name="mensagem" placeholder="Alguma dúvida ou informação extra? (opcional)"></textarea>
+
+      <!-- 4. Dados do Aluno -->
+      <div class="form-block">
+        <label class="form-block__label">4. Dados do Aluno</label>
+        <div class="form-field">
+          <label for="f-nome-aluno">Nome completo do aluno <span>*</span></label>
+          <input type="text" id="f-nome-aluno" name="nome_aluno" placeholder="Nome completo da criança/estudante" required>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-field">
+            <label for="f-nascimento">Data de nascimento <span>*</span></label>
+            <input type="text" id="f-nascimento" name="data_nascimento" placeholder="DD/MM/AAAA" required>
+          </div>
+          <div class="form-field">
+            <label for="f-tel-aluno">Telefone do aluno</label>
+            <input type="tel" id="f-tel-aluno" name="telefone_aluno" placeholder="(14) 99999-9999 (opcional)">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="f-escola-anterior">Escola anterior</label>
+          <input type="text" id="f-escola-anterior" name="escola_anterior" placeholder="Nome da escola anterior (opcional)">
+        </div>
       </div>
+
+      <!-- 5. Histórico do Aluno -->
+      <div class="form-block">
+        <label class="form-block__label">5. Histórico do Aluno</label>
+
+        <!-- Necessidades Especiais -->
+        <div class="form-conditional-group">
+          <label class="sublabel">Possui necessidades especiais? <span>*</span></label>
+          <div class="form-pills">
+            <label class="pill-option"><input type="radio" name="necessidades_especiais" value="Não" checked> <span>Não</span></label>
+            <label class="pill-option"><input type="radio" name="necessidades_especiais" value="Sim"> <span>Sim</span></label>
+          </div>
+          <div class="form-field hidden-conditional" id="field-qual-necessidades">
+            <label for="f-qual-necessidades">Qual?</label>
+            <input type="text" id="f-qual-necessidades" name="qual_necessidades" placeholder="Descreva as necessidades especiais">
+          </div>
+        </div>
+
+        <!-- Medicação -->
+        <div class="form-conditional-group">
+          <label class="sublabel">Usa medicação de uso contínuo? <span>*</span></label>
+          <div class="form-pills">
+            <label class="pill-option"><input type="radio" name="medicacao" value="Não" checked> <span>Não</span></label>
+            <label class="pill-option"><input type="radio" name="medicacao" value="Sim"> <span>Sim</span></label>
+          </div>
+          <div class="form-field hidden-conditional" id="field-qual-medicacao">
+            <label for="f-qual-medicacao">Qual?</label>
+            <input type="text" id="f-qual-medicacao" name="qual_medicacao" placeholder="Informe o medicamento e dosagem">
+          </div>
+        </div>
+
+        <!-- Acompanhamento Profissional -->
+        <div class="form-conditional-group">
+          <label class="sublabel">Faz acompanhamento profissional (psicólogo, psicopedagogo, fonoaudiólogo, etc.)? <span>*</span></label>
+          <div class="form-pills">
+            <label class="pill-option"><input type="radio" name="acompanhamento" value="Não" checked> <span>Não</span></label>
+            <label class="pill-option"><input type="radio" name="acompanhamento" value="Sim"> <span>Sim</span></label>
+          </div>
+          <div class="form-field hidden-conditional" id="field-qual-acompanhamento">
+            <label for="f-qual-acompanhamento">Qual profissional / especialidade?</label>
+            <input type="text" id="f-qual-acompanhamento" name="qual_acompanhamento" placeholder="Descreva o acompanhamento">
+          </div>
+        </div>
+      </div>
+
       <button type="submit" class="modal__submit" id="modalSubmit">
-        <span class="btn-label">Continuar no WhatsApp</span>
+        <span class="btn-label">Enviar Ficha de Atendimento →</span>
         <span class="spinner"></span>
       </button>
-      <div class="modal__error" id="modalError">Ocorreu um erro. Tente novamente.</div>
+      <div class="modal__error" id="modalError">Por favor, preencha todos os campos obrigatórios (*).</div>
     </form>
   </div>
 </div>
@@ -503,11 +600,14 @@
   .modal-overlay.open { opacity: 1; visibility: visible; }
   .modal {
     background: var(--navy); border: 1px solid rgba(255,255,255,.1); border-radius: 18px;
-    width: 100%; max-width: 480px; padding: 40px 36px 36px; position: relative;
+    width: 100%; max-width: 580px; max-height: 88vh; overflow-y: auto; padding: 36px 30px 30px; position: relative;
     transform: translateY(20px) scale(.97); transition: transform .28s;
     background-image: linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
     background-size: 56px 56px;
+    scrollbar-width: thin; scrollbar-color: var(--gold) rgba(255,255,255,.05);
   }
+  .modal::-webkit-scrollbar { width: 6px; }
+  .modal::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
   .modal-overlay.open .modal { transform: translateY(0) scale(1); }
   .modal__close {
     position: absolute; top: 16px; right: 16px;
@@ -517,24 +617,52 @@
     color: rgba(255,255,255,.6); transition: background .2s, color .2s;
   }
   .modal__close:hover { background: rgba(255,255,255,.16); color: white; }
-  .modal__tag { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .modal__tag { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
   .modal__title { font-family: var(--font-display); font-size: 22px; font-weight: 900; color: white; line-height: 1.2; margin-bottom: 6px; }
-  .modal__sub { font-size: 13px; color: rgba(255,255,255,.5); margin-bottom: 28px; line-height: 1.55; }
-  .modal__form { display: flex; flex-direction: column; gap: 14px; }
+  .modal__sub { font-size: 13px; color: rgba(255,255,255,.65); margin-bottom: 20px; line-height: 1.55; }
+  .modal__form { display: flex; flex-direction: column; gap: 10px; }
+  .form-section-title {
+    font-family: var(--font-display); font-size: 13px; font-weight: 800; color: var(--gold);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 6px; margin-bottom: 12px; letter-spacing: .02em;
+  }
+  .form-block {
+    background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px;
+    padding: 14px; margin-bottom: 10px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .form-block__label { font-family: var(--font-display); font-size: 12px; font-weight: 700; color: #ffffff; margin-bottom: 2px; }
+  .form-block__label span { color: var(--red); }
+  .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 580px) { .form-grid-2 { grid-template-columns: 1fr; } }
+  .form-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill-option { cursor: pointer; margin: 0; }
+  .pill-option input { display: none; }
+  .pill-option span {
+    display: inline-block; padding: 7px 12px; border-radius: 20px;
+    background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8); font-size: 12px; font-weight: 600; transition: all .2s ease; user-select: none;
+  }
+  .pill-option input:checked + span {
+    background: var(--red); border-color: var(--red); color: #ffffff; box-shadow: 0 4px 12px rgba(227, 27, 35, 0.35);
+  }
+  .form-conditional-group { display: flex; flex-direction: column; gap: 6px; border-top: 1px solid rgba(255,255,255,.06); padding-top: 10px; }
+  .form-conditional-group:first-child { border-top: none; padding-top: 0; }
+  .sublabel { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.8); line-height: 1.4; }
+  .hidden-conditional { display: none; margin-top: 4px; }
+  .hidden-conditional.active { display: flex; }
   .form-field { display: flex; flex-direction: column; gap: 5px; }
-  .form-field label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.55); letter-spacing: .04em; }
+  .form-field label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.65); letter-spacing: .03em; }
   .form-field label span { color: var(--red); margin-left: 2px; }
-  .form-field input, .form-field textarea {
+  .form-field input, .form-field textarea, .form-field select {
     background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 8px;
-    padding: 11px 14px; font-size: 14px; color: white; font-family: var(--font-body);
+    padding: 10px 12px; font-size: 13px; color: white; font-family: var(--font-body);
     outline: none; transition: border-color .2s, background .2s; width: 100%; box-sizing: border-box;
   }
-  .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(255,255,255,.25); }
-  .form-field input:focus, .form-field textarea:focus { border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.09); }
-  .form-field input.error, .form-field textarea.error { border-color: var(--red); }
-  .form-field textarea { resize: vertical; min-height: 80px; }
+  .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(255,255,255,.3); }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.09); }
+  .form-field input.error, .form-field textarea.error, .form-field select.error, .form-block.error { border: 1px solid var(--red); }
+  .form-field textarea { resize: vertical; min-height: 70px; }
   .modal__submit {
-    margin-top: 6px; width: 100%;
+    margin-top: 8px; width: 100%;
     background: var(--red); color: white;
     font-family: var(--font-display); font-size: 15px; font-weight: 800;
     padding: 14px; border: none; border-radius: 10px; cursor: pointer;
@@ -705,11 +833,11 @@
     if (!open) { item.classList.add('open'); ans.style.maxHeight = ans.scrollHeight + 'px'; }
   });
 
-  /* Modal */
+  /* Modal & Ficha de Atendimento 2026 */
   const WA_VISITA      = 'https://wa.me/5514991033758?text=Olá!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Colégio%20Criativo.';
   const WA_REMATRICULA = 'https://wa.me/5514991033758?text=Olá!%20Gostaria%20de%20renovar%20a%20matrícula%20do%20meu%20filho.';
   const MODAL_COPY = {
-    visita:      { tag:'Família nova',           title:'Agende sua visita',       sub:'Preencha seus dados e nossa equipe vai falar com você pelo WhatsApp.', wa: WA_VISITA },
+    visita:      { tag:'Família nova',           title:'Visitas e Matrículas',       sub:'Preencha a ficha abaixo para nossa equipe dar início ao atendimento pelo WhatsApp.', wa: WA_VISITA },
     rematricula: { tag:'Já sou família Criativo', title:'Renovar minha matrícula', sub:'Preencha seus dados e finalize a renovação direto pelo WhatsApp.',     wa: WA_REMATRICULA }
   };
   let currentType = 'visita';
@@ -719,20 +847,81 @@
   const modalSubmit = document.getElementById('modalSubmit');
   const modalError  = document.getElementById('modalError');
 
-  function openModal(type) {
-    currentType = type;
-    const c = MODAL_COPY[type];
-    document.getElementById('modalTag').textContent   = c.tag;
-    document.getElementById('modalTitle').textContent = c.title;
-    document.getElementById('modalSub').textContent   = c.sub;
-    modalForm.reset();
-    modalForm.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
-    modalError.style.display = 'none';
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    document.getElementById('f-nome').focus();
+  /* Toggles para campos condicionais ("Qual?") */
+  function setupConditionalRadios(radioName, containerId) {
+    document.querySelectorAll(`input[name="${radioName}"]`).forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        if (e.target.value === 'Sim') {
+          container.classList.add('active');
+          const input = container.querySelector('input');
+          if (input) input.focus();
+        } else {
+          container.classList.remove('active');
+        }
+      });
+    });
   }
-  function closeModal() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+  setupConditionalRadios('necessidades_especiais', 'field-qual-necessidades');
+  setupConditionalRadios('medicacao', 'field-qual-medicacao');
+  setupConditionalRadios('acompanhamento', 'field-qual-acompanhamento');
+
+  function openModal(type) {
+    currentType = type || 'visita';
+    const c = MODAL_COPY[currentType] || MODAL_COPY.visita;
+    if (document.getElementById('modalTag')) document.getElementById('modalTag').textContent   = c.tag;
+    if (document.getElementById('modalTitle')) document.getElementById('modalTitle').textContent = c.title;
+    if (document.getElementById('modalSub')) document.getElementById('modalSub').textContent   = c.sub;
+    clearErrors();
+    if (modalError) modalError.style.display = 'none';
+    if (overlay) overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() { if (overlay) overlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+  function clearErrors() {
+    if (!modalForm) return;
+    modalForm.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+  }
+
+  function validateForm() {
+    clearErrors();
+    let ok = true;
+
+    // Validar modalidade
+    const modalidadeChecked = modalForm.querySelector('input[name="modalidade"]:checked');
+    if (!modalidadeChecked) {
+      const block = modalForm.querySelector('input[name="modalidade"]')?.closest('.form-block');
+      if (block) block.classList.add('error');
+      ok = false;
+    }
+
+    // Validar periodo
+    const periodoChecked = modalForm.querySelector('input[name="periodo"]:checked');
+    if (!periodoChecked) {
+      const block = modalForm.querySelector('input[name="periodo"]')?.closest('.form-block');
+      if (block) block.classList.add('error');
+      ok = false;
+    }
+
+    // Validar inputs obrigatorios
+    ['f-serie', 'f-nome-resp', 'f-whatsapp', 'f-email', 'f-nome-aluno', 'f-nascimento'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && !el.value.trim()) {
+        el.classList.add('error');
+        ok = false;
+      }
+    });
+
+    const email = document.getElementById('f-email');
+    if (email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      email.classList.add('error');
+      ok = false;
+    }
+
+    return ok;
+  }
 </script>
 
 <!-- ================================================================
@@ -744,7 +933,7 @@
       <div class="wa-flow-header__info">
         <div class="wa-flow-avatar">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
           </svg>
         </div>
         <div>
@@ -814,6 +1003,24 @@
   }
 
   if (waFlowForm) {
+    const desejaEl = document.getElementById('wf-deseja');
+    if (desejaEl) {
+      desejaEl.addEventListener('change', () => {
+        if (desejaEl.value === 'Matrícula' || desejaEl.value === 'Agendamento de Visita') {
+          const nomeVal = document.getElementById('wf-nome')?.value.trim() || '';
+          const emailVal = document.getElementById('wf-email')?.value.trim() || '';
+          const waVal = document.getElementById('wf-whatsapp')?.value.trim() || '';
+          
+          if (nomeVal && document.getElementById('f-nome-resp')) document.getElementById('f-nome-resp').value = nomeVal;
+          if (emailVal && document.getElementById('f-email')) document.getElementById('f-email').value = emailVal;
+          if (waVal && document.getElementById('f-whatsapp')) document.getElementById('f-whatsapp').value = waVal;
+
+          waFlowCard.classList.remove('active');
+          if (typeof openModal === 'function') openModal('visita');
+        }
+      });
+    }
+
     waFlowForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const nome = document.getElementById('wf-nome');
@@ -830,6 +1037,15 @@
         email.classList.add('error'); ok = false;
       }
       if (!ok) return;
+
+      if (deseja.value === 'Matrícula' || deseja.value === 'Agendamento de Visita') {
+        if (document.getElementById('f-nome-resp')) document.getElementById('f-nome-resp').value = nome.value.trim();
+        if (document.getElementById('f-email')) document.getElementById('f-email').value = email.value.trim();
+        if (document.getElementById('f-whatsapp')) document.getElementById('f-whatsapp').value = whatsapp.value.trim();
+        waFlowCard.classList.remove('active');
+        if (typeof openModal === 'function') openModal('visita');
+        return;
+      }
 
       waFlowSubmit.classList.add('loading');
       waFlowSubmit.disabled = true;
@@ -861,29 +1077,75 @@
 </script>
 
 <script>
-  modalForm.addEventListener('submit', async e => {
-    e.preventDefault();
-    modalForm.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
-    let ok = true;
-    ['f-nome','f-whatsapp','f-email'].forEach(id => { const el = document.getElementById(id); if (!el.value.trim()) { el.classList.add('error'); ok = false; } });
-    const email = document.getElementById('f-email');
-    if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.classList.add('error'); ok = false; }
-    if (!ok) return;
-    modalSubmit.classList.add('loading'); modalSubmit.disabled = true; modalError.style.display = 'none';
-    try {
-      await fetch('https://n8nwebhook.mercattatech.com.br/webhook/mercatta-growth-web', {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ tipo: currentType, nome: document.getElementById('f-nome').value.trim(), whatsapp: document.getElementById('f-whatsapp').value.trim(), email: document.getElementById('f-email').value.trim(), mensagem: document.getElementById('f-mensagem').value.trim(), origem: window.location.href })
-      });
-    } catch(_) {}
-    finally { modalSubmit.classList.remove('loading'); modalSubmit.disabled = false; }
-    closeModal();
-    window.location.href = 'obrigado.html';
-  });
+  if (modalForm) {
+    modalForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (!validateForm()) {
+        if (modalError) {
+          modalError.style.display = 'block';
+          modalError.textContent = 'Por favor, preencha todos os campos obrigatórios (*).';
+        }
+        return;
+      }
+
+      const btn = modalSubmit;
+      if (btn) {
+        btn.classList.add('loading');
+        btn.disabled = true;
+      }
+      if (modalError) modalError.style.display = 'none';
+
+      const modalidadeVal = modalForm.querySelector('input[name="modalidade"]:checked')?.value || '';
+      const periodoVal = modalForm.querySelector('input[name="periodo"]:checked')?.value || '';
+      const necEspChecked = modalForm.querySelector('input[name="necessidades_especiais"]:checked')?.value || 'Não';
+      const medChecked = modalForm.querySelector('input[name="medicacao"]:checked')?.value || 'Não';
+      const acompChecked = modalForm.querySelector('input[name="acompanhamento"]:checked')?.value || 'Não';
+
+      const qualNec = document.getElementById('f-qual-necessidades')?.value.trim() || '';
+      const qualMed = document.getElementById('f-qual-medicacao')?.value.trim() || '';
+      const qualAcomp = document.getElementById('f-qual-acompanhamento')?.value.trim() || '';
+
+      const payload = {
+        tipo: currentType || 'visita_matricula',
+        ficha: '📋 FICHA DE ATENDIMENTO – 2026',
+        modalidade: modalidadeVal,
+        serie: document.getElementById('f-serie')?.value.trim() || '',
+        periodo: periodoVal,
+        nome_responsavel: document.getElementById('f-nome-resp')?.value.trim() || '',
+        whatsapp: document.getElementById('f-whatsapp')?.value.trim() || '',
+        email: document.getElementById('f-email')?.value.trim() || '',
+        nome_aluno: document.getElementById('f-nome-aluno')?.value.trim() || '',
+        data_nascimento: document.getElementById('f-nascimento')?.value.trim() || '',
+        telefone_aluno: document.getElementById('f-tel-aluno')?.value.trim() || '',
+        escola_anterior: document.getElementById('f-escola-anterior')?.value.trim() || '',
+        necessidades_especiais: necEspChecked === 'Sim' ? `Sim: ${qualNec}` : 'Não',
+        medicacao: medChecked === 'Sim' ? `Sim: ${qualMed}` : 'Não',
+        acompanhamento_profissional: acompChecked === 'Sim' ? `Sim: ${qualAcomp}` : 'Não',
+        origem: window.location.href,
+      };
+
+      try {
+        await fetch('https://n8nwebhook.mercattatech.com.br/webhook/mercatta-growth-web', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+      } catch (_) {
+      } finally {
+        if (btn) {
+          btn.classList.remove('loading');
+          btn.disabled = false;
+        }
+      }
+
+      closeModal();
+      window.location.href = 'obrigado.html';
+    });
+  }
 
   document.addEventListener('click', e => { const t = e.target.closest('[data-modal]'); if (t) { e.preventDefault(); openModal(t.dataset.modal); } });
-  modalClose.addEventListener('click', closeModal);
-  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  if (overlay) overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
 </body>
