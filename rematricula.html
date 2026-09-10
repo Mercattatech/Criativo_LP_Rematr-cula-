@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rematricula 2027 — Colegio Criativo · Bauru</title>
+  <meta name="description" content="Rematricula 2027 do Colegio Criativo de Bauru. Garanta a vaga do seu filho e continue essa jornada de maos dadas com a gente.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       TOKENS (same design system as main site)
+    ============================================================ */
+    :root {
+      --navy:        #0E2A6E;
+      --navy-deep:   #091d4f;
+      --red:         #E2161B;
+      --red-hover:   #c01015;
+      --white:       #FFFFFF;
+      --gold:        #F4C430;
+      --gray-100:    #F4F5F7;
+      --gray-400:    #5B6470;
+      --gray-900:    #1A1A1A;
+
+      --font-display: 'Archivo', sans-serif;
+      --font-body:    'Inter', sans-serif;
+
+      --r-sm:  8px;
+      --r-md:  16px;
+      --r-lg:  24px;
+      --r-xl:  40px;
+
+      --shadow-sm: 0 2px 8px  rgba(14,42,110,.08);
+      --shadow-md: 0 8px 32px rgba(14,42,110,.12);
+      --shadow-lg: 0 20px 56px rgba(14,42,110,.18);
+
+      --ease: cubic-bezier(.4,0,.2,1);
+      --t: .3s var(--ease);
+
+      --max-w: 1200px;
+      --pad-x: clamp(20px, 4vw, 48px);
+    }
+
+    /* ============================================================
+       RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--gray-900);
+      background: var(--navy-deep);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a   { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    @media (prefers-reduced-motion: reduce) {
+      *, .reveal { transition: none !important; animation: none !important; }
+    }
+
+    /* ============================================================
+       CONTAINER
+    ============================================================ */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+
+    /* ============================================================
+       ANIMATED BACKGROUND
+    ============================================================ */
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: var(--navy-deep);
+      overflow: hidden;
+    }
+    .page-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: .35;
+      animation: float 20s ease-in-out infinite;
+    }
+    .orb--1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(226,22,27,.25) 0%, transparent 70%);
+      top: -10%; left: -5%;
+      animation-delay: 0s;
+    }
+    .orb--2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(14,42,110,.4) 0%, transparent 70%);
+      top: 40%; right: -10%;
+      animation-delay: -7s;
+    }
+    .orb--3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(244,196,48,.15) 0%, transparent 70%);
+      bottom: -5%; left: 30%;
+      animation-delay: -14s;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25%      { transform: translate(30px, -40px) scale(1.05); }
+      50%      { transform: translate(-20px, 20px) scale(.95); }
+      75%      { transform: translate(15px, 35px) scale(1.02); }
+    }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    .header {
+      position: relative;
+      z-index: 10;
+      padding: 28px 0;
+    }
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+    .header__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,.6);
+      transition: color var(--t);
+    }
+    .header__back:hover { color: var(--white); }
+    .header__back svg { width: 16px; height: 16px; }
+
+    /* ============================================================
+       MAIN CONTENT
+    ============================================================ */
+    .main {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 100px);
+      padding: 40px 0 80px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--r-xl);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+      animation: cardIn .8s var(--ease) both;
+      animation-delay: .2s;
+    }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(30px) scale(.97); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* Card top accent */
+    .card__accent {
+      height: 4px;
+      background: linear-gradient(90deg, var(--red) 0%, var(--gold) 50%, var(--navy) 100%);
+    }
+
+    .card__body {
+      padding: clamp(32px, 6vw, 56px) clamp(28px, 5vw, 52px);
+      text-align: center;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(244,196,48,.1);
+      border: 1px solid rgba(244,196,48,.22);
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      animation: badgeIn .6s var(--ease) both;
+      animation-delay: .5s;
+    }
+    @keyframes badgeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .badge__dot {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: blink 2.2s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%     { opacity:.4; transform:scale(1.35); }
+    }
+
+    /* Icon circle */
+    .card__icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(226,22,27,.15), rgba(244,196,48,.12));
+      border: 1px solid rgba(244,196,48,.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      animation: iconPulse 3s ease-in-out infinite;
+    }
+    @keyframes iconPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(244,196,48,.15); }
+      50%      { box-shadow: 0 0 0 18px rgba(244,196,48,0); }
+    }
+    .card__icon svg {
+      width: 36px;
+      height: 36px;
+      fill: var(--gold);
+    }
+
+    /* Title */
+    .card__title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.12;
+      letter-spacing: -.02em;
+      margin-bottom: 8px;
+      animation: textIn .7s var(--ease) both;
+      animation-delay: .6s;
+    }
+    @keyframes textIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .card__title em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--gold), #ffe066);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Subtitle */
+    .card__subtitle {
+      font-family: var(--font-display);
+      font-size: clamp(15px, 1.8vw, 18px);
+      font-weight: 500;
+      color: rgba(255,255,255,.55);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 36px;
+      animation: textIn .7s var(--ease) both;
+      animation-delay: .75s;
+    }
+
+    /* Divider */
+    .card__divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(244,196,48,.5), transparent);
+      margin: 0 auto 36px;
+    }
+
+    /* Steps */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .step {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: var(--r-md);
+      padding: 22px 16px;
+      transition: var(--t);
+      animation: stepIn .6s var(--ease) both;
+    }
+    .step:nth-child(1) { animation-delay: .85s; }
+    .step:nth-child(2) { animation-delay: .95s; }
+    .step:nth-child(3) { animation-delay: 1.05s; }
+    .step:hover {
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.14);
+      transform: translateY(-3px);
+    }
+    @keyframes stepIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .step__num {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--gold), #ffe066);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .step__text {
+      font-size: 13px;
+      color: rgba(255,255,255,.6);
+      line-height: 1.55;
+    }
+    .step__text strong {
+      display: block;
+      color: rgba(255,255,255,.9);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    /* CTA Button */
+    .cta-wrapper {
+      animation: ctaIn .7s var(--ease) both;
+      animation-delay: 1.15s;
+    }
+    @keyframes ctaIn {
+      from { opacity: 0; transform: translateY(16px) scale(.96); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--white);
+      background: linear-gradient(135deg, var(--red) 0%, #c01015 100%);
+      padding: 18px 40px;
+      border-radius: var(--r-md);
+      transition: all .35s var(--ease);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(226,22,27,.3);
+      text-decoration: none;
+    }
+    .btn-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.15) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity .35s var(--ease);
+    }
+    .btn-cta:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 44px rgba(226,22,27,.45);
+    }
+    .btn-cta:hover::before { opacity: 1; }
+    .btn-cta:active {
+      transform: translateY(-1px) scale(.99);
+    }
+
+    .btn-cta svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      flex-shrink: 0;
+      transition: transform .3s var(--ease);
+    }
+    .btn-cta:hover svg {
+      transform: translateX(4px);
+    }
+
+    .btn-cta__text {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Pulse ring around button */
+    .cta-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Security note */
+    .card__note {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 12px;
+      color: rgba(255,255,255,.35);
+      animation: textIn .6s var(--ease) both;
+      animation-delay: 1.3s;
+    }
+    .card__note svg {
+      width: 14px;
+      height: 14px;
+      fill: rgba(255,255,255,.35);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       INFO STRIP
+    ============================================================ */
+    .info-strip {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      animation: textIn .6s var(--ease) both;
+      animation-delay: 1.4s;
+    }
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .info-item__icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(244,196,48,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .info-item__icon svg { width: 16px; height: 16px; fill: var(--gold); }
+    .info-item__text {
+      font-size: 12px;
+      color: rgba(255,255,255,.45);
+      line-height: 1.3;
+    }
+    .info-item__text strong {
+      display: block;
+      color: rgba(255,255,255,.8);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* ============================================================
+       QUOTE
+    ============================================================ */
+    .quote-section {
+      position: relative;
+      z-index: 1;
+      padding: 0 0 60px;
+      animation: textIn .7s var(--ease) both;
+      animation-delay: 1.5s;
+    }
+    .quote-card {
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .quote-card__mark {
+      font-family: var(--font-display);
+      font-size: 64px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: .6;
+      opacity: .3;
+      margin-bottom: 8px;
+    }
+    .quote-card__text {
+      font-family: var(--font-display);
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 600;
+      color: rgba(255,255,255,.45);
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .quote-card__text em {
+      font-style: normal;
+      color: rgba(255,255,255,.7);
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(255,255,255,.05);
+      padding: 24px 0;
+    }
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer__copy {
+      font-size: 12px;
+      color: rgba(255,255,255,.2);
+    }
+    .footer__links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer__link {
+      font-size: 12px;
+      color: rgba(255,255,255,.3);
+      transition: color var(--t);
+    }
+    .footer__link:hover { color: rgba(255,255,255,.6); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 640px) {
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .step {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 18px;
+        text-align: left;
+      }
+      .step__num { margin-bottom: 0; font-size: 24px; }
+      .step__text strong { margin-bottom: 0; }
+      .btn-cta { width: 100%; justify-content: center; }
+      .info-strip { flex-direction: column; align-items: center; }
+      .footer__inner { justify-content: center; text-align: center; flex-direction: column; }
+      .card__body { padding: 28px 22px; }
+    }
+
+    /* ============================================================
+       ACCESSIBILITY
+    ============================================================ */
+    .btn-cta:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+    .header__back:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="page-bg" aria-hidden="true">
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="logo" aria-label="Colegio Criativo - Pagina inicial">
+          <img src="design/assets/logo_branco.png" alt="Colegio Criativo" class="logo-img">
+        </a>
+        <a href="index.html" class="header__back">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Voltar ao site
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="container">
+      <div class="card">
+        <div class="card__accent"></div>
+        <div class="card__body">
+
+          <!-- Badge -->
+          <div class="badge">
+            <span class="badge__dot"></span>
+            Rematricula aberta
+          </div>
+
+          <!-- Icon -->
+          <div class="card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+
+          <!-- Title -->
+          <h1 class="card__title">
+            Continue <em>de maos dadas</em><br>com o Criativo
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="card__subtitle">
+            Garanta a vaga do seu filho para 2027. Clique no botao abaixo para acessar o portal de rematricula e renovar a jornada da sua familia.
+          </p>
+
+          <!-- Divider -->
+          <div class="card__divider"></div>
+
+          <!-- Steps -->
+          <div class="steps">
+            <div class="step">
+              <div class="step__num">1</div>
+              <div class="step__text">
+                <strong>Acesse o portal</strong>
+                Clique no botao abaixo para abrir o sistema de rematricula
+              </div>
+            </div>
+            <div class="step">
+              <div class="step__num">2</div>
+              <div class="step__text">
+                <strong>Faca o login</strong>
+                Use seus dados de acesso do portal do aluno
+              </div>
+            </div>
+            <div class="step">
+              <div class="step__num">3</div>
+              <div class="step__text">
+                <strong>Confirme a vaga</strong>
+                Siga os passos e garanta a rematricula 2027
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="cta-wrapper">
+            <a href="https://criativo.saenet.net.br/Sae8Portal/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn-cta"
+               id="btn-rematricula">
+              <span class="btn-cta__text">Fazer a Rematricula 2027</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Security Note -->
+          <div class="card__note">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+            </svg>
+            Ambiente seguro — Portal SAE Oficial
+          </div>
+
+          <!-- Info Strip -->
+          <div class="info-strip">
+            <div class="info-item">
+              <div class="info-item__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                </svg>
+              </div>
+              <div class="info-item__text">
+                <strong>Horario</strong>
+                Disponivel 24h
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-item__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+              </div>
+              <div class="info-item__text">
+                <strong>(14) 3239-6060</strong>
+                Duvidas
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-item__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+              </div>
+              <div class="info-item__text">
+                <strong>Bauru - SP</strong>
+                Al. dos Heliotropos, 3-28
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Quote -->
+      <div class="quote-section">
+        <div class="quote-card">
+          <div class="quote-card__mark">"</div>
+          <p class="quote-card__text">
+            Educar e caminhar <em>de maos dadas</em>. O futuro se constroi com <em>principios, etica e lideranca</em>.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__copy">2025 Colegio Criativo. Todos os direitos reservados.</span>
+        <div class="footer__links">
+          <a href="index.html" class="footer__link">Site Principal</a>
+          <a href="faq.html" class="footer__link">Duvidas Frequentes</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
